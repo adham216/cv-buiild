@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV & Portfolio Templates | ResumeBuilder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- use modal window or popup modal in viewing templates -->  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">ResumeBuilder</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="templates.html" class="active">Templates</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+      <div id="user-controls">
+        <a href="login.html" class="btn" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn-alt" style="margin-left: 10px;" id="signup-btn">Sign Up</a>
+        <span id="user-greeting" style="display: none;">Welcome, <span id="user-name"></span>!</span>
+        <a href="#" id="logout-btn" class="btn" style="display: none; margin-left: 10px;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="templates-hero">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="container">
+      <h1>Professional Resume Templates</h1>
+      <p>Choose from our collection of ATS-friendly templates designed to help you stand out to recruiters and hiring managers.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="filters">
+        <button class="filter-btn active">All Templates</button>
+        <button class="filter-btn">Professional</button>
+        <button class="filter-btn">Creative</button>
+        <button class="filter-btn">Modern</button>
+        <button class="filter-btn">Simple</button>
+        <button class="filter-btn">Executive</button>
+        <button class="filter-btn">Student</button>
+      </div>      <div class="templates-grid">     
+        
+         <div class="template-card" data-categories="professional classic">
+            <div class="template-img">
+              <img
+                src="https://cdn.create.microsoft.com/catalog-assets/en-us/a6ce606f-4d1b-45e4-9923-de33195f45da/thumbnails/616/ats-bold-classic-resume-modern-simple-2-1-c955d388e942.webp"
+                alt="Classic Bold template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Classic Bold</h3>
+              <div class="template-tags">
+                <span class="template-tag">Professional</span>
+                <span class="template-tag">Classic</span>
+              </div>
+              <p>Perfect for senior positions and executive roles with a professional clean layout.</p>
+              <a href="cv.html" class="btn" style="width: 100%;">Select Template</a>
+            </div>
+          </div>   
+        
+        <!-- Template Card 2 -->
+        <div class="template-card">
+          <div class="template-img">
+            <img
+              src="https://cdn.create.microsoft.com/catalog-assets/en-us/1138bdc2-5b51-4800-816d-fcf90d7e6af9/thumbnails/616/creative-teaching-resume-whimsical-2-1-b6a463aef820.webp"
+              alt="Creative Edge template preview"
+              class="template-preview"
+            >
+            <div class="template-overlay">
+              <a href="#" class="btn">View This Template</a>
+            </div>
+          </div>
+          <div class="template-info">
+            <h3>Creative Edge</h3>
+            <div class="template-tags">
+              <span class="template-tag">Creative</span>
+              <span class="template-tag">Modern</span>
+            </div>
+            <p>Bold and creative design for careers in design, marketing, and creative industries.</p>
+            <a href="cv.html" class="btn" style="width: 100%;">Select Template</a>
+          </div>
+        </div>
+
+        <!-- Template Card 3 -->
+        <div class="template-card">
+          <div class="template-img">
+            <img
+              src="https://cdn.create.microsoft.com/catalog-assets/en-us/4b83e384-3f44-4f2a-a531-d077fe8afc40/thumbnails/616/cv-%2528resume%2529-modern-color-block-2-1-ac3909096b43.webp"
+              alt="Minimalist template preview"
+              class="template-preview"
+            >
+            <div class="template-overlay">
+              <a href="#" class="btn">View This Template</a>
+            </div>
+          </div>
+          <div class="template-info">
+            <h3>Minimalist</h3>
+            <div class="template-tags">
+              <span class="template-tag">Simple</span>
+              <span class="template-tag">Clean</span>
+            </div>
+            <p>Clean and minimal design for a straightforward and professional presentation.</p>
+            <a href="cv.html" class="btn" style="width: 100%;">Select Template</a>
+          </div>
+        </div>
+        
+        <!-- Template Card 4 - New CV Resume Template -->
+        <div class="template-card" data-categories="professional elegant">
+          <div class="template-img">            <img
+              src="https://create.microsoft.com/_next/image?url=https://cdn.create.microsoft.com/uploadedfiles/uploads/2c96bb8c-03a1-4349-a13e-c9c2bf256f52-ats-finance-resume-2-1.webp&w=1920&q=90"
+              alt="Dark themed template preview"
+              class="template-preview"
+            >
+            <div class="template-overlay">
+              <a href="#" class="btn">View This Template</a>
+            </div>
+          </div>          <div class="template-info">
+            <h3>Dark themed</h3>
+            <div class="template-tags">
+              <span class="template-tag">Professional</span>
+              <span class="template-tag">Elegant</span>
+            </div>
+            <p>A sophisticated two-column layout with elegant formatting for a standout resume.</p>
+            <a href="cv.html" class="btn" style="width: 100%;">Select Template</a>
+          </div>
+        </div>
+
+        <!-- Template Card 5 -->
+        <div class="template-card">
+          <div class="template-img">
+            <img
+              src="https://cdn.create.microsoft.com/catalog-assets/en-us/b97c34b7-bcc4-4366-92c6-8b5a08ba27cc/thumbnails/616/ats-stylish-accounting-resume-modern-simple-2-1-e282b79aeb83.webp"
+              alt="Graduate Focus template preview"
+              class="template-preview"
+            >
+            <div class="template-overlay">
+              <a href="#" class="btn">View This Template</a>
+            </div>
+          </div>
+          <div class="template-info">
+            <h3>Stylish Soft</h3>
+            <div class="template-tags">
+              <span class="template-tag">Student</span>
+              <span class="template-tag">Simple</span>
+            </div>
+            <p>Ideal for recent graduates focusing on education and relevant skills.</p>
+            <a href="cv.html" class="btn" style="width: 100%;">Select Template</a>
+          </div>
+        </div>
+
+        <!-- Template Card 6 -->
+        <div class="template-card">
+          <div class="template-img">
+            <img
+              src="https://cdn.create.microsoft.com/catalog-assets/en-us/591e685e-fff1-400f-9fdf-92cb88141bbd/thumbnails/616/simple-ats-healthcare-resume-purple-modern-simple-2-1-41374cba7641.webp"
+              alt="Executive Elite template preview"
+              class="template-preview"
+            >
+            <div class="template-overlay">
+              <a href="#" class="btn">View This Template</a>
+            </div>
+          </div>
+          <div class="template-info">
+            <h3>Modern chronological</h3>
+            <div class="template-tags">
+              <span class="template-tag">Executive</span>
+              <span class="template-tag">Modern</span>
+            </div>
+            <p>Premium design for C-suite executives and senior management positions.</p>
+            <a href="cv.html" class="btn" style="width: 100%;">Select Template</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <a href="index.html" class="btn">Back</a>
+    </div>
+  </section>
+
+   <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>ResumeBuilder</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Resume Tips</a></li>
+                    <li><a href="#">Cover Letter Guide</a></li>
+                    <li><a href="#">Interview Prep</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2025 ResumeBuilder. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+  <!-- Full-screen modal for preview -->
+  <div id="previewModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Full template preview">
+  </div>
+
+  <script>
+    const modal = document.getElementById('previewModal');
+    const modalImg = document.getElementById('modalImg');
+
+    // Handle clicks on template preview images
+    document.querySelectorAll('.template-preview').forEach(img => {
+      img.addEventListener('click', e => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    // Handle clicks on "View This Template" buttons
+    document.querySelectorAll('.template-overlay .btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const templateCard = btn.closest('.template-card');
+        const img = templateCard.querySelector('.template-preview');
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    // Close modal when clicking on the close button
+    document.querySelector('.modal-close').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Template filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all filter buttons and template cards
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const templateCards = document.querySelectorAll('.template-card');
+      
+      // Add event listeners to each filter button
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove 'active' class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add 'active' class to the clicked button
+          this.classList.add('active');
+          
+          // Get the filter category from the button's text
+          const filterCategory = this.textContent.trim().toLowerCase();
+          
+          // Show all templates if "All Templates" is selected
+          if (filterCategory === 'all templates') {
+            templateCards.forEach(card => {
+              card.style.display = 'block';
+              // Optional animation
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 10);
+            });
+          } else {
+            // Otherwise, filter templates by category
+            templateCards.forEach(card => {
+              // Get all tags in this card
+              const tags = card.querySelectorAll('.template-tag');
+              
+              // Check if any tag matches the filter category
+              let matchesFilter = false;
+              tags.forEach(tag => {
+                if (tag.textContent.trim().toLowerCase() === filterCategory) {
+                  matchesFilter = true;
+                }
+              });
+              
+              // Show or hide based on filter match
+              if (matchesFilter) {
+                card.style.display = 'block';
+                // Optional animation
+                setTimeout(() => {
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+                }, 10);
+              } else {
+                // Add a nice fade-out effect
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                  card.style.display = 'none';
+                }, 300); // Match this timing with CSS transition
+              }
+            });
+          }
+        });
+      });
+    });
+
+     
+    // Inside the existing script tag in resumeTemplates.html
+    document.querySelectorAll('.template-card .btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        if (btn.textContent === 'Select Template') {  // Only handle "Select Template" buttons
+          e.preventDefault();
+          const card = btn.closest('.template-card');
+          const img = card.querySelector('img.template-preview').src;
+          const name = card.querySelector('.template-info h3').textContent;
+          
+          // Store both the template name and the actual template file path
+          localStorage.setItem('selectedTemplateSrc', img);
+          localStorage.setItem('selectedTemplateName', name);          // Map specific templates to their files
+          let templatePath;
+          switch(name) {            case 'Classic Bold':
+              templatePath = 'classicBold_temp.html';
+              break;
+            case 'Creative Edge':
+              templatePath = 'creativeEdge_temp.html';
+              break;            case 'Minimalist':
+              templatePath = 'cvResume_temp.html'; // Third card uses cvResume_temp.html
+              break;
+            case 'Dark themed':
+              templatePath = 'darkThemed_temp.html';
+              break;
+            case 'Stylish Soft':
+              templatePath = 'stylishSoft_temp.html';
+              break;
+            case 'Modern chronological':
+              templatePath = 'modernChronological_temp.html';
+              break;
+            default:
+              // Fallback based on tags
+              const tags = Array.from(card.querySelectorAll('.template-tag')).map(tag => tag.textContent.toLowerCase());
+              templatePath = tags.includes('creative') || tags.includes('modern') ? 'creativeEdge_temp.html' : 'classicBold_temp.html';
+          }
+          
+          localStorage.setItem('selectedTemplatePath', templatePath);
+          window.location.href = btn.href;
+        }
+      });
+    });
+
+    // On the CV page, retrieve the selected template name and path
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectedTemplateSrc = localStorage.getItem('selectedTemplateSrc');
+      const selectedTemplateName = localStorage.getItem('selectedTemplateName');
+      const selectedTemplatePath = localStorage.getItem('selectedTemplatePath');      if (selectedTemplateSrc && selectedTemplateName && selectedTemplatePath) {
+        document.querySelector('.template-preview').src = selectedTemplateSrc;
+        document.querySelector('.template-name').textContent = selectedTemplateName;
+        document.querySelector('.template-path').textContent = selectedTemplatePath;
+      }
+    });
+    
+    // Check if user is logged in
+    document.addEventListener('DOMContentLoaded', function() {
+      const userString = localStorage.getItem('user');
+      
+      if (userString) {
+        const user = JSON.parse(userString);
+        document.getElementById('login-btn').style.display = 'none';
+        document.getElementById('signup-btn').style.display = 'none';
+        document.getElementById('user-name').textContent = user.firstName || user.email;
+        document.getElementById('user-greeting').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'inline';
+      }        // Logout functionality
+      document.getElementById('logout-btn').addEventListener('click', async function(e) {
+        e.preventDefault();
+        console.log('Logout button clicked');
+        
+        try {
+          console.log('Sending logout request to server...');
+          const response = await fetch('http://localhost:3000/logout', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          console.log('Logout response:', response);
+          
+          // Regardless of server response, clear local storage
+          localStorage.removeItem('user');
+          console.log('User data removed from localStorage');
+          
+          // Redirect to home page
+          window.location.href = 'index.html';
+        } catch (err) {
+          console.error('Logout error:', err);
+          // Still clear localStorage and redirect even if there's an error
+          localStorage.removeItem('user');
+          window.location.href = 'index.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

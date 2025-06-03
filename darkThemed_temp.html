@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donna Robbins - Accountant Resume</title>
+  <style>
+    body {
+      background: #222;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #222;
+      padding: 40px 40px 32px 40px;
+      box-sizing: border-box;
+    }
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 2.4em;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+    h2 {
+      font-size: 1.1em;
+      font-weight: normal;
+      letter-spacing: 2px;
+      color: #dcdcdc;
+      margin: 0 0 24px 0;
+      text-transform: uppercase;
+    }
+    .contact {
+      font-size: 0.97em;
+      margin-bottom: 30px;
+      color: #f0f0f0;
+      letter-spacing: 0.5px;
+    }
+    .section-title {
+      font-size: 1.18em;
+      font-weight: bold;
+      margin: 30px 0 8px 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #444;
+      padding-bottom: 4px;
+    }
+    .section-content {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    .experience, .education {
+      margin-bottom: 10px;
+    }
+    .job-title {
+      font-weight: bold;
+      font-size: 1.08em;
+      letter-spacing: 0.5px;
+      margin-top: 14px;
+    }
+    .job-location {
+      font-style: italic;
+      color: #aaa;
+      font-size: 0.97em;
+    }
+    .job-dates {
+      float: right;
+      font-size: 0.97em;
+      color: #aaa;
+      font-weight: normal;
+      margin-left: 10px;
+    }
+    .job-details {
+      margin: 4px 0 0 0;
+      font-size: 0.97em;
+      line-height: 1.45em;
+      color: #f1f1f1;
+    }
+    ul.skills-list {
+      list-style: none;
+      padding: 0;
+      columns: 2;
+      margin-top: 8px;
+      font-size: 1em;
+    }
+    ul.skills-list li {
+      margin-bottom: 7px;
+      padding-left: 18px;
+      position: relative;
+    }
+    ul.skills-list li:before {
+      content: "•";
+      color: #e1b800;
+      position: absolute;
+      left: 0;
+    }
+    @media (max-width: 700px) {
+      .container {
+        padding: 22px 8px 16px 8px;
+      }
+      ul.skills-list {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DONNA ROBBINS</h1>
+    <h2>ACCOUNTANT</h2>
+    <div class="contact">
+      313.555.0100 &nbsp;|&nbsp; DONNA@EXAMPLE.COM &nbsp;|&nbsp; WWW.GREATESTADDRESS.COM
+    </div>
+
+    <div class="section-title">Background</div>
+    <div class="section-content">
+      Analytical, organized and detail-oriented accountant with GAAP expertise and experience in the full spectrum of public accounting. Collaborative team player with outstanding mentality and a strong track record of delivering the highest quality, data-centric solutions to resolve challenges and propel business growth.
+    </div>
+
+    <div class="section-title">Education</div>
+    <div class="section-content education">
+      <strong>Bachelor of Science in Accounting, Minor in Business Administration</strong><br>
+      Bellers College, 20XX–20XX<br>
+      <ul style="margin: 6px 0 0 18px; color:#eee; font-size:0.96em;">
+        <li>Distinguished member of university's Account Society</li>
+        <li>Relevant coursework: Advanced Financial Accounting and Reporting</li>
+        <li>GPA: 3.8</li>
+      </ul>
+    </div>
+
+    <div class="section-title">Experience</div>
+    <div class="section-content experience">
+      <div class="job-title">
+        Trey Research | Accountant
+        <span class="job-dates">San Francisco, CA, 20XX – Present</span>
+      </div>
+      <div class="job-details">
+        Working in a mid-sized public accounting firm to provide professional accounting services for individuals and financial entities. Handled full range of services, including income tax preparation, audit, tax support, preparation of financial statements, Pro Forma budgeting, general ledger accounting and reconciliation.
+      </div>
+    </div>
+    <div class="section-content experience">
+      <div class="job-title">
+        Banyan Real Estate | Bookkeeper
+        <span class="job-dates">Berkeley, CA, 20XX – 20XX</span>
+      </div>
+      <div class="job-details">
+        Provided bookkeeping for a small real estate development company. Maintained financial books, tracked expenses, analyzed and classified transactions.
+      </div>
+    </div>
+    <div class="section-content experience">
+      <div class="job-title">
+        Union Harris Ltd. | Accounting Intern
+        <span class="job-dates">Oakland, CA, 20XX – 20XX</span>
+      </div>
+      <div class="job-details">
+        Provided accounting and client services management for 150+ employees. Prepared invoices for more than 200 financial and tax-related transactions, records organization and preparation, and other office duties to support the accounting team.
+      </div>
+    </div>
+
+    <div class="section-title">Skills</div>    <ul class="skills-list">
+      <li>Microsoft NAV Dynamics</li>
+      <li>Cashflow planning & management</li>
+      <li>State & Federal Tax Codes</li>
+      <li>QuickBooks Certified</li>
+      <li>Exceptional communication</li>
+      <li>Fluent in German</li>
+    </ul>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load data from localStorage
+      const fullName = localStorage.getItem('fullName');
+      const title = localStorage.getItem('title');
+      const contact = localStorage.getItem('contact');
+      const objective = localStorage.getItem('objective');
+      
+      // Update name, title, and contact info
+      if (fullName) document.querySelector('h1').textContent = fullName.toUpperCase();
+      if (title) document.querySelector('h2').textContent = title.toUpperCase();
+      if (contact) document.querySelector('.contact').textContent = contact;
+      if (objective) document.querySelector('.section-content').textContent = objective;
+      
+      // Load work experience
+      const workExperience = localStorage.getItem('workExperience');
+      if (workExperience) {
+        try {
+          const experienceData = JSON.parse(workExperience);
+          const experienceSection = document.querySelector('.section-title:nth-of-type(3)').nextElementSibling;
+          
+          // Clear default experience items
+          while (experienceSection.nextElementSibling && experienceSection.nextElementSibling.classList.contains('section-content')) {
+            experienceSection.nextElementSibling.remove();
+          }
+          
+          // Add user experience items
+          experienceData.forEach(item => {
+            if (!item.jobTitle && !item.company) return;
+            
+            const jobDiv = document.createElement('div');
+            jobDiv.className = 'section-content experience';
+            
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'job-title';
+            titleDiv.innerHTML = `${item.company || ''} | ${item.jobTitle || ''} <span class="job-dates">${item.jobLocation || ''}, ${item.jobStartDate || ''} – ${item.jobEndDate || 'Present'}</span>`;
+            
+            const detailsDiv = document.createElement('div');
+            detailsDiv.className = 'job-details';
+            detailsDiv.textContent = item.jobDescription || '';
+            
+            jobDiv.appendChild(titleDiv);
+            jobDiv.appendChild(detailsDiv);
+            
+            experienceSection.after(jobDiv);
+          });
+        } catch (e) { console.error('Experience parse error', e); }
+      }
+      
+      // Load education
+      const education = localStorage.getItem('education');
+      if (education) {
+        try {
+          const educationData = JSON.parse(education);
+          const educationSection = document.querySelector('.section-title:nth-of-type(2)').nextElementSibling;
+          
+          // Clear default education
+          educationSection.innerHTML = '';
+          
+          // Add user education
+          educationData.forEach(item => {
+            if (!item.degree && !item.institution) return;
+            
+            const eduDiv = document.createElement('div');
+            eduDiv.className = 'section-content education';
+            
+            const degreeEl = document.createElement('strong');
+            degreeEl.textContent = item.degree || '';
+            
+            eduDiv.appendChild(degreeEl);
+            eduDiv.appendChild(document.createElement('br'));
+            eduDiv.appendChild(document.createTextNode(`${item.institution || ''}, ${item.eduStartDate || ''}–${item.eduEndDate || ''}`));
+            
+            if (item.eduAchievements) {
+              const achievementsList = document.createElement('ul');
+              achievementsList.style = "margin: 6px 0 0 18px; color:#eee; font-size:0.96em;";
+              
+              item.eduAchievements.split('\n').forEach(achievement => {
+                if (achievement.trim()) {
+                  const li = document.createElement('li');
+                  li.textContent = achievement.trim();
+                  achievementsList.appendChild(li);
+                }
+              });
+              
+              eduDiv.appendChild(achievementsList);
+            }
+            
+            educationSection.appendChild(eduDiv);
+          });
+        } catch (e) { console.error('Education parse error', e); }
+      }
+      
+      // Load skills
+      const skills = localStorage.getItem('skills');
+      if (skills) {
+        const skillsList = document.querySelector('.skills-list');
+        skillsList.innerHTML = ''; // Clear default skills
+        
+        skills.split('\n').forEach(skill => {
+          if (skill.trim()) {
+            const li = document.createElement('li');
+            li.textContent = skill.trim();
+            skillsList.appendChild(li);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

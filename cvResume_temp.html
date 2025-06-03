@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itai Gerbi - Software Engineer</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+          body {
+            background-color: rgba(240, 206, 169, 0.426);
+            color: #000;
+            line-height: 1.5;
+            padding: 15px;
+            margin: 0;
+            height: 100vh;
+            overflow: auto;
+        }
+        
+        .resume-container {
+            max-width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            position: relative;
+            padding: 5px;
+        }
+          .left-column {
+            width: 37%;
+            float: left;
+            padding-right: 15px;
+        }
+        
+        .right-column {
+            width: 63%;
+            float: right;
+        }
+        
+        .vertical-line {
+            position: absolute;
+            left: 35%;
+            top: 100px;
+            bottom: 10px;
+            width: 2px;
+            background-color: #e9a36a;
+        }
+          .photo-placeholder {
+            width: 100%;
+            height: 80px;
+            background-color: #fce9de52;
+            margin-bottom: 20px;
+        }
+          .name {
+            color: #c65c14;
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+          .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .left-column .section-title {
+            text-decoration: underline;
+            text-decoration-color: #e9a36a;
+            text-underline-offset: 5px;
+        }
+        
+        .right-column .section-title {
+           
+            margin-bottom: 15px;
+        }
+        
+        .right-column .section-content {
+            margin-bottom: 20px;
+        }
+        
+        .right-column hr {
+            border: none;
+            height: 2px;
+            background-color: #e9a36a;
+            margin: 20px 0;
+        }
+        
+        
+          .skills-title::after  {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #e9a36a;
+        }
+        .languages-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: #e9a36a;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
+        
+        li {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="left-column">
+            <div class="photo-placeholder"></div>
+            
+            <h1 class="name"></h1>
+            <div class="title"></div>
+            
+            <div class="section" style="margin-top: 50px;">
+                <h2 class="section-title">Personal Info</h2>
+                <div class="section-content personal-info-content"></div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                <div class="section-content experience-content"></div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="section-content education-content"></div>
+            </div>
+        </div>
+        
+        <div class="vertical-line"></div>
+        
+        <div class="right-column">
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="section-content summary-content"></div>
+            </div>
+            
+            <hr>
+            
+            <div class="section">
+                <h2 class="section-title skills-title">Skills</h2>
+                <div class="section-content skills-content"></div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title languages-title">Languages</h2>
+                <div class="section-content languages-content"></div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title languages-title">Certifications</h2>
+                <div class="section-content certifications-content"></div>
+            </div>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Name, Title, Contact, Summary
+      const nameEl = document.querySelector('.name');
+      const titleEl = document.querySelector('.title');
+      const summaryEl = document.querySelector('.summary-content');
+      const personalInfoEl = document.querySelector('.personal-info-content');
+      const experienceEl = document.querySelector('.experience-content');
+      const educationEl = document.querySelector('.education-content');
+      const skillsEl = document.querySelector('.skills-content');
+      const languagesEl = document.querySelector('.languages-content');
+      const certificationsEl = document.querySelector('.certifications-content');
+      
+      const fullName = localStorage.getItem('fullName') || '';
+      const title = localStorage.getItem('title') || '';
+      const contact = localStorage.getItem('contact') || '';
+      const summary = localStorage.getItem('objective') || '';
+      const workExperience = JSON.parse(localStorage.getItem('workExperience') || '[]');
+      const education = JSON.parse(localStorage.getItem('education') || '[]');
+      const skills = (localStorage.getItem('skills') || '').split('\n').filter(s => s.trim());
+      const languages = JSON.parse(localStorage.getItem('languages') || '[]');
+      const certifications = JSON.parse(localStorage.getItem('certifications') || '[]');
+      
+      // Name
+      nameEl.textContent = fullName;
+      // Title
+      titleEl.textContent = title;
+      // Personal Info
+      personalInfoEl.textContent = contact;
+      // Summary
+      summaryEl.textContent = summary;
+      // Experience
+      if (workExperience.length) {
+        workExperience.forEach(item => {
+          if (!item.jobTitle && !item.company) return;
+          const div = document.createElement('div');
+          div.innerHTML = `<b>${item.jobTitle || ''}</b> ${item.company ? '| ' + item.company : ''} <br><span style='font-size:12px;'>${item.jobStartDate || ''}${item.jobEndDate ? ' – ' + item.jobEndDate : ''}${item.jobLocation ? ' | ' + item.jobLocation : ''}</span>`;
+          if (item.jobDescription) {
+            const ul = document.createElement('ul');
+            item.jobDescription.split('\n').forEach(line => {
+              if (line.trim()) {
+                const li = document.createElement('li');
+                li.textContent = line.trim();
+                ul.appendChild(li);
+              }
+            });
+            div.appendChild(ul);
+          }
+          experienceEl.appendChild(div);
+        });
+      }
+      // Education
+      if (education.length) {
+        education.forEach(item => {
+          if (!item.degree && !item.institution) return;
+          const div = document.createElement('div');
+          div.innerHTML = `<b>${item.degree || ''}</b> ${item.institution ? '| ' + item.institution : ''} <br><span style='font-size:12px;'>${item.eduStartDate || ''}${item.eduEndDate ? ' – ' + item.eduEndDate : ''}${item.eduLocation ? ' | ' + item.eduLocation : ''}</span>`;
+          if (item.eduAchievements) {
+            const ul = document.createElement('ul');
+            item.eduAchievements.split('\n').forEach(line => {
+              if (line.trim()) {
+                const li = document.createElement('li');
+                li.textContent = line.trim();
+                ul.appendChild(li);
+              }
+            });
+            div.appendChild(ul);
+          }
+          educationEl.appendChild(div);
+        });
+      }
+      // Skills
+      if (skills.length) {
+        const ul = document.createElement('ul');
+        skills.forEach(skill => {
+          const li = document.createElement('li');
+          li.textContent = skill;
+          ul.appendChild(li);
+        });
+        skillsEl.appendChild(ul);
+      }
+      // Languages
+      if (languages.length) {
+        const ul = document.createElement('ul');
+        languages.forEach(item => {
+          if (!item.language) return;
+          const li = document.createElement('li');
+          li.textContent = `${item.language}${item.proficiency ? ' - ' + item.proficiency : ''}`;
+          ul.appendChild(li);
+        });
+        languagesEl.appendChild(ul);
+      }
+      // Certifications
+      if (certifications.length) {
+        const ul = document.createElement('ul');
+        certifications.forEach(item => {
+          if (!item.certName) return;
+          let certText = item.certName;
+          if (item.certOrg) certText += ' | ' + item.certOrg;
+          if (item.certDate) certText += ' | ' + item.certDate;
+          if (item.certExpiry) certText += ' | Exp: ' + item.certExpiry;
+          const li = document.createElement('li');
+          li.textContent = certText;
+          ul.appendChild(li);
+        });
+        certificationsEl.appendChild(ul);
+      }
+    });
+    </script>
+</body>
+</html>

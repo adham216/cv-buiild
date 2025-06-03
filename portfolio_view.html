@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio | PortfolioBuilder</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(155, 11, 131, 0.199);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .loader {
+            width: 44.8px;
+            height: 44.8px;
+            color: #d617a6;
+            position: relative;
+            background: radial-gradient(11.2px,currentColor 94%,#0000);
+        }
+
+        .loader:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(10.08px at bottom right,#0000 94%,currentColor) top    left,
+                    radial-gradient(10.08px at bottom left ,#0000 94%,currentColor) top    right,
+                    radial-gradient(10.08px at top    right,#0000 94%,currentColor) bottom left,
+                    radial-gradient(10.08px at top    left ,#0000 94%,currentColor) bottom right;
+            background-size: 22.4px 22.4px;
+            background-repeat: no-repeat;
+            animation: loader 1.5s infinite cubic-bezier(0.3,1,0,1);
+        }
+
+        @keyframes loader {
+            33% {
+                inset: -11.2px;
+                transform: rotate(0deg);
+            }
+
+            66% {
+                inset: -11.2px;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                inset: 0;
+                transform: rotate(45deg);
+            }
+        }
+        
+        .portfolio-page {
+            min-height: 100vh;
+            padding: 80px 0;
+        }
+        
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .portfolio-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #f953c6, #b91d73, #8c1bab, #5555dd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .portfolio-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .action-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #f953c6, #b91d73);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(249, 83, 198, 0.3);
+        }
+        
+        .portfolio-frame {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-frame {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ResumeBuilder</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="templates.html">Resume Templates</a></li>
+                <li><a href="portfolioTemplates.html">Portfolio Templates</a></li>
+                <li><a href="#">Pricing</a></li>
+            </ul>
+            <div id="user-controls">
+                <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                <a href="#" id="logout-btn" class="btn">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="portfolio-page">
+        <div class="portfolio-container">
+            <div class="portfolio-header">
+                <h1 class="portfolio-title">Your Portfolio</h1>
+                <p id="portfolio-owner">Loading portfolio...</p>
+                <div class="portfolio-actions">
+                    <a href="dashboard.html" class="action-btn">Back to Dashboard</a>
+                    <a href="#" id="edit-portfolio-btn" class="action-btn">Edit Portfolio</a>
+                </div>
+            </div>
+            
+            <iframe id="portfolio-frame" class="portfolio-frame" src="about:blank"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="templates.html">Resume Templates</a></li>
+                    <li><a href="portfolioTemplates.html">Portfolio Templates</a></li>
+                    <li><a href="#">Cover Letters</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Resume Guide</a></li>
+                    <li><a href="#">Cover Letter Guide</a></li>
+                    <li><a href="#">Portfolio Tips</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2025 ResumeBuilder. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // When page loads, set the iframe src to the template from localStorage
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Show loader
+            const loaderContainer = document.querySelector('.loader-container');
+            loaderContainer.style.display = 'flex';
+            
+            // Check if there's a portfolio ID in the URL query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const portfolioId = urlParams.get('id');
+            
+            if (portfolioId) {
+                // Fetch portfolio data from server
+                try {
+                    const response = await fetch(`http://localhost:3000/portfolio/${portfolioId}`);
+                    
+                    if (response.ok) {
+                        const portfolioData = await response.json();
+                        
+                        // Set portfolio owner name
+                        document.getElementById('portfolio-owner').textContent = 
+                            portfolioData.personalInfo?.fullName || 'Your Portfolio';
+                        
+                        // Set document title
+                        document.title = `${portfolioData.personalInfo?.fullName || 'Portfolio'} | Portfolio Builder`;
+                        
+                        // Set the iframe src to the template file
+                        const templateFile = portfolioData.template?.file;
+                        if (templateFile) {
+                            // Store the portfolio data in sessionStorage for the template to access
+                            sessionStorage.setItem('currentPortfolio', JSON.stringify(portfolioData));
+                            
+                            // Set the iframe src
+                            document.getElementById('portfolio-frame').src = templateFile;
+                            
+                            // Set up edit button
+                            document.getElementById('edit-portfolio-btn').href = `port.html?id=${portfolioId}`;
+                        } else {
+                            alert('Template information is missing. Please try again or contact support.');
+                        }
+                    } else {
+                        const errorText = await response.text();
+                        throw new Error(`Failed to fetch portfolio: ${errorText}`);
+                    }
+                } catch (error) {
+                    console.error('Error loading portfolio:', error);
+                    alert('Failed to load portfolio. Please try again or contact support.');
+                } finally {
+                    // Hide loader
+                    loaderContainer.style.display = 'none';
+                }
+            } else {
+                alert('No portfolio ID provided. Please go back to dashboard and try again.');
+                loaderContainer.style.display = 'none';
+            }
+            
+            // Set up logout button
+            document.getElementById('logout-btn').addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                try {
+                    const response = await fetch('http://localhost:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    
+                    if (response.ok) {
+                        // Clear user data from local storage
+                        localStorage.removeItem('user');
+                        
+                        // Redirect to login page
+                        window.location.href = 'login.html';
+                    } else {
+                        const errorText = await response.text();
+                        throw new Error(`Logout failed: ${errorText}`);
+                    }
+                } catch (err) {
+                    console.error('Error during logout:', err);
+                    alert('Failed to logout. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

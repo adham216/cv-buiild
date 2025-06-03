@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danielle Brasseur - Resume</title>
+    <style>
+        /* Global Styles */
+        .title{
+            color: #04843154;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #04843189; /* Light green text color */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #d0e8d0; /* Dark green background */
+        }
+        
+        /* Header and Contact Info */
+        .header {
+            color: rgba(189, 20, 20, 0.552);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 5px;
+            color: #04843154; /* Brighter green for main name */
+        }
+        
+        .contact-info {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #048431d2; /* Light green for contact info */
+        }
+        
+        .contact-info a {
+            color:  #048431d2; /* Light green for links */
+        }
+        
+        /* Section Styles */
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            border-bottom: 2px solid  #048431d2; /* Bright border for emphasis */
+            padding-bottom: 5px;
+            color:  #048431d2; /* Bright green for subheadings */
+        }
+        
+        /* Experience Entries */
+        .job {
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .company {
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .location {
+            display: inline;
+        }
+        
+        .date {
+            float: right;
+            font-style: italic;
+        }
+        
+        /* Lists */
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color:  #048431d2; /* Light green bullet points */
+        }
+        
+        /* Education */
+        .education-entry {
+            margin-bottom: 10px;
+        }
+        
+        .degree {
+            font-weight: bold;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 30px;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Languages */
+        .languages-list {
+            columns: 2;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .skills-container {
+                flex-direction: column;
+            }
+            
+            .date {
+                float: none;
+                display: block;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="name">DANIELLE BRASSEUR</h1>
+    </div>
+    
+    <div class="contact-info">
+        4567 8<sup>th</sup> Avenue, Carson City, NV 10111 | (313) 555-0100 | 
+        <a href="mailto:danielle@example.com">danielle@example.com</a> | 
+        <a href="http://www.linkedin.com">www.linkedin.com</a>
+    </div>
+    
+    <div class="section">
+        <h2>OBJECTIVE</h2>
+        <p class="objective-paragraph">
+            Dynamic and detail-oriented accountant with expertise in GAAP and comprehensive public accounting experience. Known
+            for delivering top-notch strategic solutions and fostering business growth through effective collaboration and ownership
+            mentality.
+        </p>
+    </div>
+    
+    <div class="section education-section">
+        <h2>EDUCATION</h2>
+    </div>
+    
+    <div class="section experience-section">
+        <h2>EXPERIENCE</h2>
+    </div>
+    
+    <div class="section skills-section">
+        <h2>SKILLS</h2>
+        <div class="skills-container"></div>
+    </div>
+    
+    <div class="section language-section">
+        <h2>LANGUAGES</h2>
+        <div class="languages-list"></div>
+    </div>
+    <div class="section certification-section">
+        <h2>CERTIFICATIONS</h2>
+        <div class="certifications-list"></div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Name, Contact, Objective
+      const nameEl = document.querySelector('.name');
+      const contactEl = document.querySelector('.contact-info');
+      const objectiveEl = document.querySelector('.objective-paragraph');
+      const fullName = localStorage.getItem('fullName');
+      const contact = localStorage.getItem('contact');
+      const objective = localStorage.getItem('objective');
+      if (fullName) nameEl.textContent = fullName;
+      if (contact) contactEl.textContent = contact;
+      if (objective) objectiveEl.textContent = objective;
+
+      // Education
+      const educationSection = document.querySelector('.education-section');
+      const education = localStorage.getItem('education');
+      if (education && educationSection) {
+        try {
+          const data = JSON.parse(education);
+          data.forEach(item => {
+            if (!item.degree && !item.institution) return;
+            const div = document.createElement('div');
+            div.className = 'education-entry';
+            div.innerHTML = `<div><span class=\"degree\">${item.degree || ''}</span>${item.institution ? ' | ' + item.institution : ''}</div><div>${item.eduStartDate || ''}${item.eduEndDate ? ' – ' + item.eduEndDate : ''}</div>`;
+            if (item.eduAchievements || item.eduLocation) {
+              const ul = document.createElement('ul');
+              if (item.eduAchievements) {
+                item.eduAchievements.split('\n').forEach(line => {
+                  if (line.trim()) {
+                    const li = document.createElement('li');
+                    li.textContent = line.trim();
+                    ul.appendChild(li);
+                  }
+                });
+              }
+              if (item.eduLocation) {
+                const li = document.createElement('li');
+                li.textContent = item.eduLocation;
+                ul.appendChild(li);
+              }
+              div.appendChild(ul);
+            }
+            educationSection.appendChild(div);
+          });
+        } catch (e) { console.error('Education parse error', e); }
+      }
+
+      // Experience
+      const experienceSection = document.querySelector('.experience-section');
+      const workExperience = localStorage.getItem('workExperience');
+      if (workExperience && experienceSection) {
+        try {
+          const data = JSON.parse(workExperience);
+          data.forEach(item => {
+            if (!item.jobTitle && !item.company) return;
+            const jobDiv = document.createElement('div');
+            jobDiv.className = 'job';
+            jobDiv.innerHTML = `<div><span class=\"job-title\">${item.jobTitle || ''}</span>${item.company ? ' | <span class=\"company\">' + item.company + '</span>' : ''}${item.jobLocation ? ' | <span class=\"location\">' + item.jobLocation + '</span>' : ''}<span class=\"date\">${item.jobStartDate || ''}${item.jobEndDate ? ' – ' + item.jobEndDate : ''}</span></div>`;
+            if (item.jobDescription) {
+              const ul = document.createElement('ul');
+              item.jobDescription.split('\n').forEach(line => {
+                if (line.trim()) {
+                  const li = document.createElement('li');
+                  li.textContent = line.trim();
+                  ul.appendChild(li);
+                }
+              });
+              jobDiv.appendChild(ul);
+            }
+            experienceSection.appendChild(jobDiv);
+          });
+        } catch (e) { console.error('Experience parse error', e); }
+      }
+
+      // Skills
+      const skillsSection = document.querySelector('.skills-container');
+      const skills = localStorage.getItem('skills');
+      if (skills && skillsSection) {
+        const ul = document.createElement('ul');
+        skills.split('\n').forEach(skill => {
+          if (skill.trim()) {
+            const li = document.createElement('li');
+            li.textContent = skill.trim();
+            ul.appendChild(li);
+          }
+        });
+        const skillCat = document.createElement('div');
+        skillCat.className = 'skill-category';
+        skillCat.appendChild(ul);
+        skillsSection.appendChild(skillCat);
+      }
+
+      // Languages
+      const languageSection = document.querySelector('.languages-list');
+      const languages = localStorage.getItem('languages');
+      if (languages && languageSection) {
+        try {
+          const data = JSON.parse(languages);
+          const ul = document.createElement('ul');
+          data.forEach(item => {
+            if (!item.language) return;
+            const li = document.createElement('li');
+            li.textContent = `${item.language}${item.proficiency ? ' - ' + item.proficiency : ''}`;
+            ul.appendChild(li);
+          });
+          languageSection.appendChild(ul);
+        } catch (e) { console.error('Languages parse error', e); }
+      }
+
+      // Certifications
+      const certSection = document.querySelector('.certifications-list');
+      const certifications = localStorage.getItem('certifications');
+      if (certifications && certSection) {
+        try {
+          const data = JSON.parse(certifications);
+          const ul = document.createElement('ul');
+          data.forEach(item => {
+            if (!item.certName) return;
+            const li = document.createElement('li');
+            li.textContent = `${item.certName}${item.certOrg ? ' | ' + item.certOrg : ''}${item.certDate ? ' | ' + item.certDate : ''}${item.certExpiry ? ' | Exp: ' + item.certExpiry : ''}`;
+            ul.appendChild(li);
+          });
+          certSection.appendChild(ul);
+        } catch (e) { console.error('Certifications parse error', e); }
+      }
+    });
+    </script>
+</body>
+</html>

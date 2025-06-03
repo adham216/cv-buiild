@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tonnie Thomsen — Resume</title>  <!-- Fonts -->
+  <link href="https://use.typekit.net/[YOUR-KIT-CODE].css" rel="stylesheet">
+  <style>    * { box-sizing: border-box; margin:0; padding:0; }    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background: #fff;
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    a { color: inherit; text-decoration: none; }    /* Header styling */
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }    .header h1 {
+      font-family: "posterama", sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #6D509B;
+      line-height: 1;
+    }    .header .stars {
+      display: flex;
+      flex-direction: column;
+      margin-left: 30px;
+    }
+    .header .stars .top-stars {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .header .stars img {
+      filter: invert(42%) sepia(19%) saturate(2157%) hue-rotate(229deg) brightness(87%) contrast(88%);
+    }
+    .header .stars .star-large {
+      width: 28px;
+      height: 28px;
+      margin-right: 6px;
+    }
+    .header .stars .star-medium {
+      width: 22px;
+      height: 22px;
+    }
+    .header .stars .star-small {
+      width: 18px;
+      height: 18px;
+      margin-left: 12px;
+    }
+  /* Two-column layout */
+    .container {
+      display: grid;
+      grid-template-columns: 35% 65%;
+      gap: 30px;
+      margin-top: 20px;
+    }    .sidebar {
+      border: 3px solid #6D509B;
+      background: rgba(109, 80, 155, 0.03);
+      padding: 30px;
+      height: fit-content;
+      box-shadow: 2px 0 10px rgba(109, 80, 155, 0.1);
+    }
+
+    .main {
+      padding-left: 20px;
+    }
+
+    /* Section headings */    .sidebar h2,
+    .main .section-heading {
+      font-family: "posterama", sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #6D509B;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 12px;
+    }
+    .sidebar h2 { 
+      border-left: 5px solid #6D509B; 
+      padding-left: 12px;
+      text-shadow: 0.5px 0.5px 1px rgba(109, 80, 155, 0.2);
+    }
+
+    .main .section { margin-bottom:30px; }
+    .main .section-heading { display:inline-block; vertical-align:middle; }
+    .main .divider {
+      display:inline-block; vertical-align:middle;
+      margin-left:12px; width:50px; height:2px;
+      background-color:#6D509B;
+    }    /* Text styling */
+    .sidebar p, .main p {
+      font-size:12pt; line-height:1.5; margin-bottom:15px;
+    }    .sidebar ul { 
+      list-style: none; 
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sidebar ul li { 
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    /* Contact block */
+    .contact-group { margin-top:20px; }
+    .contact-group h2 { margin-top:20px; }
+    .contact-group p { font-size:12pt; margin-top:8px; line-height:1.4; }    /* Experience list */
+    .experience-item { margin-bottom:20px; }    
+    .experience-item .dates {
+      font-family: Arial, sans-serif;
+      font-size: 10pt;
+      color: #333;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .experience-item .role {
+      font-family: "posterama", sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: #6D509B;
+    }
+    .experience-item .org { font-size:12pt; color:#333; }
+  </style>
+</head>
+<body>
+  <!-- Header moved outside the purple sidebar -->  <div class="header">    <h1 id="fullName">Loading...</h1>    <div class="stars">
+      <div class="top-stars">
+        <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/star.svg" alt="star" class="star-large">
+        <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/star.svg" alt="star" class="star-medium">
+      </div>
+      <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/svgs/solid/star.svg" alt="star" class="star-small">
+    </div>
+  </div>
+
+  <div class="container">    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <h2>Objective</h2>
+      <p id="objective">Loading...</p>
+
+      <h2>Professional Title</h2>
+      <p id="professional-title">Loading...</p>
+
+      <h2>Skills</h2>
+      <ul id="skills-list">
+        <!-- Skills will be inserted here -->
+      </ul>
+
+      <div class="contact-group">
+        <h2>Address</h2>
+        <p id="address">Loading...</p>
+
+        <h2>Phone</h2>
+        <p id="phone">Loading...</p>
+
+        <h2>Email</h2>
+        <p id="email">Loading...</p>        <h2>Links</h2>
+        <div id="website">Loading...</div>
+      </div>
+    </aside>
+
+    <!-- Right Main Content -->
+    <main class="main">
+      <section class="section">
+        <div>
+          <span class="section-heading">Experience</span>
+          <span class="divider"></span>
+        </div>
+        <div id="experience-container">
+          <!-- Work experience will be inserted here -->
+        </div>
+      </section>
+
+      <section class="section">
+        <div>
+          <span class="section-heading">Education</span>
+          <span class="divider"></span>
+        </div>
+        <div id="education-container">
+          <!-- Education will be inserted here -->
+        </div>
+      </section>
+
+      <section class="section" id="languages-section">
+        <div>
+          <span class="section-heading">Languages</span>
+          <span class="divider"></span>
+        </div>
+        <div id="languages-container">
+          <!-- Languages will be inserted here -->
+        </div>
+      </section>
+
+      <section class="section" id="certifications-section">
+        <div>
+          <span class="section-heading">Certifications</span>
+          <span class="divider"></span>
+        </div>
+        <div id="certifications-container">
+          <!-- Certifications will be inserted here -->
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load and display basic information
+      document.getElementById('fullName').textContent = localStorage.getItem('fullName') || 'Your Name';
+      document.getElementById('professional-title').textContent = localStorage.getItem('title') || 'Your Title';
+      document.getElementById('objective').textContent = localStorage.getItem('objective') || 'Your objective';
+      
+      // Split contact info into separate fields
+      const contactInfo = localStorage.getItem('contact') || '';
+      const [address, phone, email] = contactInfo.split(' | ');
+      document.getElementById('address').textContent = address || 'Your Address';
+      document.getElementById('phone').textContent = phone || 'Your Phone';
+      document.getElementById('email').textContent = email || 'Your Email';      // Format website links
+      const websiteLinks = (localStorage.getItem('website') || '').split('\n').filter(link => link);
+      if (websiteLinks.length > 0) {
+        document.getElementById('website').innerHTML = websiteLinks
+          .map(link => `<p><a href="${link}" target="_blank">${link}</a></p>`)
+          .join('');
+      } else {
+        document.getElementById('website').innerHTML = '<p>No links provided</p>';
+      }      // Load and format skills
+      const skills = localStorage.getItem('skills');
+      if (skills) {
+        const skillsList = document.getElementById('skills-list');
+        skillsList.innerHTML = skills.split('\n')
+          .filter(skill => skill.trim().length > 0)
+          .map(skill => `<li>${skill.trim()}</li>`)
+          .join('');
+      }
+
+      // Load and format work experience
+      const workExperience = JSON.parse(localStorage.getItem('workExperience') || '[]');
+      const experienceContainer = document.getElementById('experience-container');
+      experienceContainer.innerHTML = workExperience.map(job => `
+        <div class="experience-item">
+          <div class="dates">${job.jobStartDate} – ${job.jobEndDate || 'Present'}</div>
+          <div class="role">${job.jobTitle}</div>
+          <div class="org">${job.company} ${job.jobLocation ? '• ' + job.jobLocation : ''}</div>
+          ${job.jobDescription ? `<p>${job.jobDescription}</p>` : ''}
+        </div>
+      `).join('');
+
+      // Load and format education
+      const education = JSON.parse(localStorage.getItem('education') || '[]');
+      const educationContainer = document.getElementById('education-container');
+      educationContainer.innerHTML = education.map(edu => `
+        <div class="experience-item">
+          <div class="dates">${edu.eduStartDate} – ${edu.eduEndDate || 'Present'}</div>
+          <div class="role">${edu.degree}</div>
+          <div class="org">${edu.institution} ${edu.eduLocation ? '• ' + edu.eduLocation : ''}</div>
+          ${edu.eduAchievements ? `<p>${edu.eduAchievements}</p>` : ''}
+        </div>
+      `).join('');
+
+      // Load and format languages
+      const languages = JSON.parse(localStorage.getItem('languages') || '[]');
+      if (languages.length > 0) {
+        const languagesContainer = document.getElementById('languages-container');
+        languagesContainer.innerHTML = languages.map(lang => 
+          `<p><strong>${lang.language}</strong> - ${lang.proficiency}</p>`
+        ).join('');
+      } else {
+        document.getElementById('languages-section').style.display = 'none';
+      }
+
+      // Load and format certifications
+      const certifications = JSON.parse(localStorage.getItem('certifications') || '[]');
+      if (certifications.length > 0) {
+        const certificationsContainer = document.getElementById('certifications-container');
+        certificationsContainer.innerHTML = certifications.map(cert => `
+          <div class="experience-item">
+            <div class="dates">${cert.certDate}${cert.certExpiry ? ' – ' + cert.certExpiry : ''}</div>
+            <div class="role">${cert.certName}</div>
+            <div class="org">${cert.certOrg}</div>
+          </div>
+        `).join('');
+      } else {
+        document.getElementById('certifications-section').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

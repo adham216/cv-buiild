@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Templates | ResumeBuilder</title>  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Modal Navigation Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      max-width: 80%;
+      max-height: 80vh;
+      object-fit: contain;
+      margin: auto;
+      display: block;
+    }
+    
+    .modal-title {
+      color: white;
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .modal-nav {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 50px;
+      box-sizing: border-box;
+    }
+    
+    .modal-prev, .modal-next {
+      color: white;
+      font-size: 60px;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0 15px;
+      margin-top: -30px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .modal-prev {
+      left: 20px;
+    }
+    
+    .modal-next {
+      right: 20px;
+    }
+    
+    .modal-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .modal-dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+    
+    .modal-dot.active {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">ResumeBuilder</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+      <div id="user-controls">
+        <a href="login.html" class="btn" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn-alt" style="margin-left: 10px;" id="signup-btn">Sign Up</a>
+        <span id="user-greeting" style="display: none;">Welcome, <span id="user-name"></span>!</span>
+        <a href="#" id="logout-btn" class="btn" style="display: none; margin-left: 10px;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="templates-hero">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="container">
+      <h1>Portfolio Templates</h1>
+      <p>Showcase your work with professionally designed portfolio templates that highlight your projects, skills, and achievements.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="filters">
+        <button class="filter-btn active" data-category="all">All Portfolios</button>
+        <button class="filter-btn" data-category="design">Design</button>
+        <button class="filter-btn" data-category="photography">Photography</button>
+        <button class="filter-btn" data-category="development">Development</button>
+        <button class="filter-btn" data-category="art">Art</button>
+        <button class="filter-btn" data-category="architecture">Architecture</button>
+      </div>      <div class="templates-grid">
+        <!-- Portfolio Template 1 -->
+        <div class="template-card" data-categories="design development">
+          <div class="template-img">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="template-preview" alt="Modern Designer portfolio template" data-images='["https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"]'>
+            <div class="template-overlay">
+              <button class="btn view-btn">View This Template</button>
+            </div>
+          </div>
+          <div class="template-info">
+            <h3>Modern Designer</h3>
+            <div class="template-tags">
+              <span>Design</span>
+              <span>Development</span>
+            </div>
+            <p>Sleek, minimal design that puts your creative work front and center. Perfect for designers and developers.</p>
+            <a href="port.html?template=ModernDesigner_ptemp.html" class="btn" style="width: 100%;">Select Template</a>
+          </div>
+        </div>
+
+        <!-- Portfolio Template 2 -->
+        <div class="template-card" data-categories="photography art">
+          <div class="template-img">
+            <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="template-preview" alt="Visual Showcase portfolio template" data-images='["https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"]'>
+            <div class="template-overlay">
+              <button class="btn view-btn">View This Template</button>
+            </div>
+          </div>
+          <div class="template-info">
+            <h3>Visual Showcase</h3>
+            <div class="template-tags">
+              <span>Photography</span>
+              <span>Art</span>
+            </div>
+            <p>Image-focused layout with gallery sections to display your visual work in a stunning format.</p>
+            <a href="port.html?template=VisualShowcase_ptemp.html" class="btn" style="width: 100%;">Select Template</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Showcase Your Work?</h2>
+      <p>Create a stunning portfolio that gets you noticed and helps you land exciting projects and opportunities.</p>
+      <div id="cta-buttons">
+        <a href="login.html" class="btn" id="cta-login-btn">Get Started for Free</a>
+        <span id="cta-user-greeting" style="display: none;">
+          <a href="port.html" class="btn">Create Your Portfolio</a>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4>ResumeBuilder</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Resume Tips</a></li>
+          <li><a href="#">Portfolio Guide</a></li>
+          <li><a href="#">Interview Prep</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="copyright">
+        &copy; 2025 ResumeBuilder. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  <!-- Full-screen modal for preview -->
+  <div id="previewModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-navigation">
+      <button class="nav-arrow nav-prev">&lsaquo;</button>
+      <img class="modal-content" id="modalImg" alt="Full template preview">
+      <button class="nav-arrow nav-next">&rsaquo;</button>
+    </div>
+    <div class="modal-dots" id="modalDots"></div>
+    <div class="modal-title" id="modalTitle"></div>
+  </div>
+
+  <style>
+    .modal-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 900px;
+    }
+    .nav-arrow {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      margin: 0 15px;
+      z-index: 1002;
+    }
+    .nav-arrow:hover {
+      background: rgba(249, 83, 198, 0.7);
+      transform: scale(1.1);
+    }
+    .modal-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dot.active {
+      background-color: rgba(249, 83, 198, 0.9);
+    }
+    .modal-title {
+      color: white;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('previewModal');
+      const modalImg = document.getElementById('modalImg');
+      const modalClose = document.querySelector('.modal-close');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDots = document.getElementById('modalDots');
+      const prevBtn = document.querySelector('.nav-prev');
+      const nextBtn = document.querySelector('.nav-next');
+      
+      let currentImageIndex = 0;
+      let images = [];
+      let currentTemplateTitle = '';
+      
+      // Function to show current image in modal
+      function showCurrentImage() {
+        if (images.length > 0) {
+          modalImg.src = images[currentImageIndex];
+          
+          // Update dots
+          const dots = modalDots.querySelectorAll('.dot');
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentImageIndex);
+          });
+        }
+      }
+      
+      // Function to create navigation dots
+      function createDots() {
+        modalDots.innerHTML = '';
+        images.forEach((_, index) => {
+          const dot = document.createElement('span');
+          dot.classList.add('dot');
+          if (index === currentImageIndex) {
+            dot.classList.add('active');
+          }
+          dot.addEventListener('click', () => {
+            currentImageIndex = index;
+            showCurrentImage();
+          });
+          modalDots.appendChild(dot);
+        });
+      }
+      
+      // Open modal with template preview images
+      function openModal(templateCard) {
+        const img = templateCard.querySelector('.template-preview');
+        const title = templateCard.querySelector('h3').textContent;
+        currentTemplateTitle = title;
+        
+        // Get images array from data-images attribute
+        try {
+          images = JSON.parse(img.getAttribute('data-images'));
+        } catch (e) {
+          images = [img.src];
+          console.error('Error parsing image data:', e);
+        }
+        
+        // Reset to first image
+        currentImageIndex = 0;
+        
+        // Show modal
+        modal.style.display = 'flex';
+        modalTitle.textContent = title;
+        
+        // Create navigation dots
+        createDots();
+        
+        // Show first image
+        showCurrentImage();
+        
+        // Update navigation buttons visibility
+        prevBtn.style.display = images.length > 1 ? 'block' : 'none';
+        nextBtn.style.display = images.length > 1 ? 'block' : 'none';
+      }
+      
+      // Handle clicks on template preview images
+      document.querySelectorAll('.template-preview').forEach(img => {
+        img.addEventListener('click', e => {
+          e.preventDefault();
+          const templateCard = img.closest('.template-card');
+          openModal(templateCard);
+        });
+      });
+
+      // Handle clicks on "View This Template" buttons
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          const templateCard = btn.closest('.template-card');
+          openModal(templateCard);
+        });
+      });
+      
+      // Previous image button
+      prevBtn.addEventListener('click', () => {
+        if (images.length > 1) {
+          currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+          showCurrentImage();
+        }
+      });
+      
+      // Next image button
+      nextBtn.addEventListener('click', () => {
+        if (images.length > 1) {
+          currentImageIndex = (currentImageIndex + 1) % images.length;
+          showCurrentImage();
+        }
+      });
+
+      // Close modal when clicking on the close button
+      modalClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      // Close modal when clicking outside the image
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', e => {
+        if (modal.style.display === 'flex') {
+          if (e.key === 'ArrowLeft') {
+            prevBtn.click();
+          } else if (e.key === 'ArrowRight') {
+            nextBtn.click();
+          } else if (e.key === 'Escape') {
+            modal.style.display = 'none';
+          }
+        }
+      });
+
+      // Template filtering functionality
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const templateCards = document.querySelectorAll('.template-card');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove 'active' class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add 'active' class to the clicked button
+          this.classList.add('active');
+          
+          // Get the filter category from the button's data attribute
+          const filterCategory = this.getAttribute('data-category').toLowerCase();
+          
+          // Show all templates if "all" is selected
+          if (filterCategory === 'all' || filterCategory === 'all portfolios') {
+            templateCards.forEach(card => {
+              card.style.display = 'block';
+              setTimeout(() => {
+                card.style.transform = 'translateY(0)';
+                card.style.opacity = '1';
+              }, 10);
+            });
+          } else {
+            // Filter templates based on the selected category
+            templateCards.forEach(card => {
+              const cardCategories = card.getAttribute('data-categories').toLowerCase();
+              
+              if (cardCategories.includes(filterCategory)) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                  card.style.transform = 'translateY(0)';
+                  card.style.opacity = '1';
+                }, 10);
+              } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                  card.style.display = 'none';
+                }, 300);
+              }
+            });
+          }        });
+      });
+    });
+    
+    // Check if user is logged in
+    document.addEventListener('DOMContentLoaded', function() {
+      const userString = localStorage.getItem('user');
+      
+      if (userString) {
+        const user = JSON.parse(userString);
+        // Update header buttons
+        document.getElementById('login-btn').style.display = 'none';
+        document.getElementById('signup-btn').style.display = 'none';
+        document.getElementById('user-name').textContent = user.firstName || user.email;
+        document.getElementById('user-greeting').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'inline';
+        
+        // Update CTA section
+        document.getElementById('cta-login-btn').style.display = 'none';
+        document.getElementById('cta-user-greeting').style.display = 'block';
+      }        // Logout functionality
+      document.getElementById('logout-btn').addEventListener('click', async function(e) {
+        e.preventDefault();
+        console.log('Logout button clicked');
+        
+        try {
+          console.log('Sending logout request to server...');
+          const response = await fetch('http://localhost:3000/logout', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          console.log('Logout response:', response);
+          
+          // Regardless of server response, clear local storage
+          localStorage.removeItem('user');
+          console.log('User data removed from localStorage');
+          
+          // Redirect to home page
+          window.location.href = 'index.html';
+        } catch (err) {
+          console.error('Logout error:', err);
+          // Still clear localStorage and redirect even if there's an error
+          localStorage.removeItem('user');
+          window.location.href = 'index.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

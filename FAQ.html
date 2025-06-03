@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support</title>
+  <!-- Bootstrap CSS (stable 5.3) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-…"
+    crossorigin="anonymous"
+  />
+  <!-- Bootstrap Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background-color: #121212;
+      color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* UNIVERSAL SECTION TITLES */
+    .section-title {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .gradient-heading {
+      background: linear-gradient(
+        to right,
+        #f953c6,
+        #b91d73,
+        #8c1bab,
+        #5555dd
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-padding {
+      padding: 6rem 0;
+    }
+
+    .bg-dark-gradient {
+      background: linear-gradient(to bottom, #0a0a0a, #111);
+    }
+
+    .bg-darker-gradient {
+      background: linear-gradient(to bottom, #111, #0a0a0a);
+    }
+
+    .card-dark {
+      background-color: rgba(20, 20, 20, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card-dark:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px 0 rgba(249, 83, 198, 0.25);
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: #f953c6;
+    }
+
+    .gradient-btn {
+      background: linear-gradient(
+        135deg,
+        #f953c6,
+        #b91d73,
+        #8c1bab,
+        #5555dd
+      );
+      border: none;
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .gradient-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(249, 83, 198, 0.8);
+      color: white;
+    }
+
+    .form-control,
+    .form-select {
+      background-color: rgba(15, 15, 15, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      background-color: rgba(15, 15, 15, 0.9);
+      border-color: rgba(249, 83, 198, 0.5);
+      box-shadow: 0 0 10px rgba(249, 83, 198, 0.2);
+      color: #fff;
+    }
+
+    .job-type-badge {
+      background-color: rgba(249, 83, 198, 0.1);
+      color: #aaa;
+    }
+
+    .job-salary {
+      color: #f953c6;
+      font-weight: bold;
+    }
+
+    /* FAQ SPECIFIC */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-question {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: rgba(238, 69, 187, 0.8);
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      color: #ddd;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- ABOUT US -->
+  <section id="about" class="section-padding bg-dark-gradient">
+    <div class="container">
+      <h2 class="section-title gradient-heading">About Us</h2>
+      <p>
+       Many people have difficulties in creating their perfect Resume. CVmaker started from the idea of making professional Resumes possible for everyone. With our CV maker, you can create a professional Resume through our step-by-step process in just 10 minutes
+
+We work with recruiters to create the right content grids which we convert into professional Resume templates. Our Resumes give you the ability to stand out from others in the best way. The templates we have created are integrated within our CV maker, making it incredibly easy to change the order and place of your content or to change the colors of your template. We give you the ability to create and download a professional Resume in just a few minutes.
+
+We are successful!
+So far, more than 100,000 people have successfully used CVmaker.com. A high majority of our users now work at some of the largest companies in the United States, thanks to our outstanding Resumes.
+
+Customer service
+Send an e-mail to support@cvmaker.com, or contact us through our contact form.
+
+Company details
+CVmaker BV
+Piet Heinkade 221
+1019HM Amsterdam
+The Netherlands
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section-padding bg-darker-gradient">
+    <div class="container">
+      <h2 class="section-title gradient-heading">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">How do I create my first resume?</div>
+          <div class="faq-answer">
+            <p>Creating your first resume is easy with ResumeBuilder:</p>
+            <ol>
+              <li>Click on "Get Started" or "Build Your CV" button</li>
+              <li>Choose a template that fits your style and industry</li>
+              <li>Follow the guided process to add your personal information, work experience, education, and skills</li>
+              <li>Customize colors and formatting as needed</li>
+              <li>Download your completed resume in PDF format or share it online</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Are your templates ATS-friendly?</div>
+          <div class="faq-answer">
+            <p>Yes, all our templates are designed to be ATS (Applicant Tracking System) friendly. They use standard sections and formatting that can be easily read by automated systems, while still looking professional and visually appealing to human recruiters.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Is ResumeBuilder free to use?</div>
+          <div class="faq-answer">
+            <p>We offer both free and premium options:</p>
+            <ul>
+              <li><strong>Free Plan:</strong> Access to basic templates, resume creation tools, and PDF downloads</li>
+              <li><strong>Premium Plan:</strong> Access to all templates, advanced customization options, cover letter tools, multiple download formats, and removal of watermarks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Can I create multiple resumes?</div>
+          <div class="faq-answer">
+            <p>Yes! You can create multiple versions of your resume for different job applications. This allows you to tailor your resume for specific roles or industries, which increases your chances of getting noticed by employers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I update my resume after I've created it?</div>
+          <div class="faq-answer">
+            <p>Updating your resume is simple. Just log into your account, navigate to "My Resumes," select the resume you want to edit, and make your changes. All your resumes are saved in your account for easy access and updates.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">What file formats can I download my resume in?</div>
+          <div class="faq-answer">
+            <p>You can download your resume in the following formats:</p>
+            <ul>
+              <li>PDF (recommended for most job applications)</li>
+              <li>DOCX (Microsoft Word)</li>
+              <li>TXT (plain text format)</li>
+              <li>HTML (for online sharing)</li>
+            </ul>
+            <p>Premium users also have access to additional formats.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section-padding bg-darker-gradient">
+    <div class="container">
+      <h2 class="section-title gradient-heading display-4 mb-5">
+        Contact Us
+      </h2>
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <h3 class="mb-4 text-white">Get In Touch</h3>
+          <p class="text-light mb-5">
+            Have questions or feedback about our platform? Need assistance
+            with your resume or portfolio? Our team is here to help! Fill out
+            the form or use the contact details below to reach us.
+          </p>
+
+          <div class="d-flex mb-4">
+            <i class="bi bi-geo-alt contact-icon me-3"></i>
+            <div>
+              <h5 class="text-white">Our Location</h5>
+              <p class="text-light">123 Resume Street, San Francisco, CA 94105</p>
+            </div>
+          </div>
+
+          <div class="d-flex mb-4">
+            <i class="bi bi-telephone contact-icon me-3"></i>
+            <div>
+              <h5 class="text-white">Phone Number</h5>
+              <p class="text-light">+1 (555) 123-4567</p>
+            </div>
+          </div>
+
+          <div class="d-flex mb-4">
+            <i class="bi bi-envelope contact-icon me-3"></i>
+            <div>
+              <h5 class="text-white">Email Address</h5>
+              <p class="text-light">support@resumebuilder.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="card card-dark p-4">
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+              <div class="mb-4">
+                <label for="problem" class="form-label">How Can We Help?</label>
+                <textarea
+                  class="form-control"
+                  id="problem"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn gradient-btn w-100 py-2">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREERS SECTION -->
+  <section id="careers" class="section-padding bg-dark-gradient">
+    <div class="container">
+      <h2 class="section-title gradient-heading mb-4">Join Our Team</h2>
+      <p class="text-light text-center mx-auto mb-5" style="max-width: 800px;">
+        At ResumeBuilder, we're always looking for talented individuals who are
+        passionate about helping others achieve their career goals. If you're
+        innovative, collaborative, and committed to excellence, we'd love to
+        hear from you!
+      </p>
+      <div class="row g-4">
+        <!-- Job cards... -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Bootstrap JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-…"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- FAQ toggle script -->
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const a = q.nextElementSibling;
+        a.style.display = a.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

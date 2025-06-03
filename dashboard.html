@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard | ResumeBuilder</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            padding-top: 5rem;
+        }
+
+        .sidebar {
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(249, 83, 198, 0.15);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-summary {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: #222;
+            overflow: hidden;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, #f953c6, #5555dd) 1;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .profile-email {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: #ddd;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: linear-gradient(135deg, rgba(249, 83, 198, 0.2), rgba(85, 85, 221, 0.2));
+            color: #fff;
+        }
+
+        .sidebar-nav a.active {
+            border-left: 3px solid #f953c6;
+        }
+
+        .dashboard-content {
+            padding: 0 1rem 3rem;
+        }
+
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #f953c6, #b91d73, #8c1bab, #5555dd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .dashboard-subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        .dashboard-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #f0f0f0;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, #f953c6, #5555dd);
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .item-card {
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(249, 83, 198, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px 0 rgba(249, 83, 198, 0.25);
+        }
+
+        .item-img {
+            height: 200px;
+            background-color: #1a1a1a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-info {
+            padding: 1.2rem;
+        }
+
+        .item-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #f0f0f0;
+        }
+
+        .item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .item-btn {
+            flex: 1;
+            padding: 0.6rem;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            background: rgba(249, 83, 198, 0.1);
+            color: #f953c6;
+            border: 1px solid rgba(249, 83, 198, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .item-btn:hover {
+            background: rgba(249, 83, 198, 0.2);
+            color: #fff;
+        }
+
+        .item-btn.edit {
+            background: rgba(85, 85, 221, 0.1);
+            color: #5555dd;
+            border: 1px solid rgba(85, 85, 221, 0.2);
+        }
+
+        .item-btn.edit:hover {
+            background: rgba(85, 85, 221, 0.2);
+            color: #fff;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .empty-state h3 {
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+        }
+
+        .empty-state p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(20, 20, 20, 0.95);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(249, 83, 198, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #f953c6, #5555dd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 990px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-stats {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ResumeBuilder</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="templates.html">Templates</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+            <div id="user-controls">
+                <span id="user-greeting">Welcome, <span id="user-name"></span>!</span>
+                <a href="#" id="logout-btn" class="btn" style="margin-left: 10px;">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container dashboard-container">
+        <aside class="sidebar">
+            <div class="profile-summary">
+                <div class="profile-avatar">
+                    <img id="profile-image" src="https://via.placeholder.com/120" alt="Profile">
+                </div>
+                <h3 class="profile-name" id="sidebar-name">John Doe</h3>
+                <p class="profile-email" id="sidebar-email">johndoe@example.com</p>
+                <a href="#profile-section" class="btn btn-alt" style="width: 100%; font-size: 0.9rem;">Edit Profile</a>
+            </div>
+            
+            <ul class="sidebar-nav">
+               
+                <li><a href="#resumes">My Resumes</a></li>
+                <li><a href="#portfolios">My Portfolios</a></li>
+                <li><a href="#profile-section">Profile Settings</a></li>
+            </ul>
+        </aside>
+        
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">My Dashboard</h1>
+                <p class="dashboard-subtitle">Manage your resumes, portfolios, and account settings</p>
+            </div>
+              <section id="dashboard" class="dashboard-section">
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="resume-count">0</div>
+                        <div class="stat-label">Resumes Created</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="portfolio-count">0</div>
+                        <div class="stat-label">Portfolios Created</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="last-update">-</div>
+                        <div class="stat-label">Last Update</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="resumes" class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">My Resumes</h2>
+                    <a href="cv.html" class="btn">Create New</a>
+                </div>
+                
+                <div class="item-grid" id="resume-grid">
+                    <!-- Resume items will be dynamically added here -->
+                    <div class="empty-state" id="no-resumes" style="display:none;">
+                        <h3>No Resumes Yet</h3>
+                        <p>Create your first professional resume to showcase your skills and experience.</p>
+                        <a href="cv.html" class="btn">Create Resume</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="portfolios" class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">My Portfolios</h2>
+                    <a href="port.html" class="btn">Create New</a>
+                </div>
+                
+                <div class="item-grid" id="portfolio-grid">
+                    <!-- Portfolio items will be dynamically added here -->
+                    <div class="empty-state" id="no-portfolios" style="display:none;">
+                        <h3>No Portfolios Yet</h3>
+                        <p>Create your first portfolio to showcase your best work and projects.</p>
+                        <a href="port.html" class="btn">Create Portfolio</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="profile-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Profile Settings</h2>
+                </div>
+                
+                <div class="form-container" style="max-width: 100%;">
+                    <form id="profile-form">
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" class="form-control" value="John">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" class="form-control" value="Doe">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" class="form-control" value="johndoe@example.com">
+                                </div>
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Professional Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="job-title">Current Job Title</label>
+                                    <input type="text" id="job-title" class="form-control" value="Senior Web Developer">
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Company</label>
+                                    <input type="text" id="company" class="form-control" value="Tech Solutions Inc.">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group" style="flex: 2;">
+                                    <label for="bio">Professional Bio</label>
+                                    <textarea id="bio" class="form-control" rows="4">Web developer with 7+ years of experience specializing in front-end development, responsive design, and modern JavaScript frameworks.</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>ResumeBuilder</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Resume Tips</a></li>
+                    <li><a href="#">Cover Letter Guide</a></li>
+                    <li><a href="#">Interview Prep</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2025 ResumeBuilder. All rights reserved.
+            </div>
+        </div>    </footer>
+
+    <!-- Replace the embedded script with our external dashboard.js file -->
+    <script src="dashboard.js"></script>
+</body>
+</html>

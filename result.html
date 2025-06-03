@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Generated CV | ResumeBuilder</title>    <link rel="stylesheet" href="styles.css">
+    <style>
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(155, 11, 131, 0.199);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .loader {
+            width: 44.8px;
+            height: 44.8px;
+            color: #d617a6;
+            position: relative;
+            background: radial-gradient(11.2px,currentColor 94%,#0000);
+        }
+
+        .loader:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(10.08px at bottom right,#0000 94%,currentColor) top    left,
+                    radial-gradient(10.08px at bottom left ,#0000 94%,currentColor) top    right,
+                    radial-gradient(10.08px at top    right,#0000 94%,currentColor) bottom left,
+                    radial-gradient(10.08px at top    left ,#0000 94%,currentColor) bottom right;
+            background-size: 22.4px 22.4px;
+            background-repeat: no-repeat;
+            animation: loader 1.5s infinite cubic-bezier(0.3,1,0,1);
+        }
+
+        @keyframes loader {
+            33% {
+                inset: -11.2px;
+                transform: rotate(0deg);
+            }
+
+            66% {
+                inset: -11.2px;
+                transform: rotate(90deg);
+            }
+
+            100% {
+                inset: 0;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ResumeBuilder</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="templates.html">Templates</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+            <div id="user-controls">
+                <a href="login.html" class="btn" id="login-btn">Login</a>
+                <a href="signup.html" class="btn btn-alt" style="margin-left: 10px;" id="signup-btn">Sign Up</a>
+                <span id="user-greeting" style="display: none;">Welcome, <span id="user-name"></span>!</span>
+                <a href="#" id="logout-btn" class="btn" style="display: none; margin-left: 10px;">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="templates-hero">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="container">
+            <h1>Your CV is Ready!</h1>
+            <p>Preview your CV below. You can print it or download it as PDF.</p>
+        </div>
+    </section>    <section style="padding: 2rem 0;">
+        <div class="container">            <div id="preview-container" style="background: #fff; padding: 0; border-radius: 8px; box-shadow: 0 0 20px rgba(249, 83, 198, 0.2); max-width: 850px; margin: 0 auto; overflow: hidden;">
+                <iframe id="cv-preview" src="classicBold_temp.html" 
+                    style="width: 100%; height: 1050px; border: none; overflow: hidden;">
+                </iframe>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button onclick="printCV()" class="btn">Print CV</button>
+                <button onclick="downloadPDF()" class="btn btn-alt">Download PDF</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>ResumeBuilder</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Resume Tips</a></li>
+                    <li><a href="#">Cover Letter Guide</a></li>
+                    <li><a href="#">Interview Prep</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2025 ResumeBuilder. All rights reserved.
+            </div>
+        </div>
+    </footer>    <script>        // When page loads, set the iframe src to the template from localStorage
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Check if there's a CV ID in the URL query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const cvId = urlParams.get('cvId');
+            
+            if (cvId) {
+                // Fetch CV data from server
+                try {
+                    const response = await fetch(`http://localhost:3000/cv/${cvId}`);
+                    
+                    if (response.ok) {
+                        const cvData = await response.json();
+                        
+                        // Store the data in localStorage for template to use
+                        localStorage.setItem('fullName', `${cvData.firstName} ${cvData.lastName}`);
+                        localStorage.setItem('title', cvData.professionalTitle || '');
+                        localStorage.setItem('objective', cvData.summary || '');
+                        
+                        // Create contact info
+                        const contactParts = [];
+                        if (cvData.location) contactParts.push(cvData.location);
+                        if (cvData.phone) contactParts.push(cvData.phone);
+                        if (cvData.email) contactParts.push(cvData.email);
+                        localStorage.setItem('contact', contactParts.join(' | '));
+                        
+                        // Store arrays
+                        localStorage.setItem('workExperience', JSON.stringify(cvData.workExperience || []));
+                        localStorage.setItem('education', JSON.stringify(cvData.education || []));
+                        localStorage.setItem('skills', cvData.skills || '');
+                        localStorage.setItem('languages', JSON.stringify(cvData.languages || []));
+                        localStorage.setItem('certifications', JSON.stringify(cvData.certifications || []));
+                        
+                        // Store the links
+                        const links = [];
+                        if (cvData.website) links.push(cvData.website);
+                        if (cvData.linkedin) links.push(cvData.linkedin);
+                        if (cvData.github) links.push(cvData.github);
+                        localStorage.setItem('website', links.join('\n'));
+                        
+                        // Store CV ID for future reference
+                        localStorage.setItem('currentCvId', cvId);
+                        
+                        // Set the template path if it exists
+                        if (cvData.template && cvData.template.name) {
+                            localStorage.setItem('selectedTemplateName', cvData.template.name);
+                            localStorage.setItem('selectedTemplateSrc', cvData.template.image || '');
+                        }
+                    } else {
+                        console.error('Failed to fetch CV:', await response.text());
+                    }
+                } catch (error) {
+                    console.error('Error fetching CV data:', error);
+                }
+            }
+            
+            // First try to get the selected template path, then fall back to default
+            const template = localStorage.getItem('selectedTemplatePath') || localStorage.getItem('currentTemplate') || 'classicBold_temp.html';            document.getElementById('cv-preview').src = template;
+            
+            // Apply specific styling for dark themed template
+            const previewContainer = document.getElementById('preview-container');
+            const buttons = document.querySelectorAll('.btn, .btn-alt');
+            
+            if (template === 'darkThemed_temp.html') {
+                // Dark theme styles
+                previewContainer.style.background = '#222';
+                previewContainer.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.4)';
+                document.body.style.backgroundColor = '#1a1a1a';
+                
+                // Update buttons to match dark theme
+                buttons.forEach(btn => {
+                    if (btn.classList.contains('btn-alt')) {
+                        btn.style.backgroundColor = '#3a3a3a';
+                        btn.style.color = '#fff';
+                        btn.style.borderColor = '#444';
+                    } else {
+                        btn.style.backgroundColor = '#444';
+                        btn.style.color = '#fff';
+                    }
+                });
+            } else {
+                // Reset styles for other templates
+                previewContainer.style.background = '#fff';
+                previewContainer.style.boxShadow = '0 0 20px rgba(249, 83, 198, 0.2)';
+                document.body.style.backgroundColor = '';
+                
+                // Reset button styles
+                buttons.forEach(btn => {
+                    btn.style = '';
+                });
+            }
+        });
+        
+        function printCV() {
+            const iframe = document.getElementById('cv-preview');
+            iframe.contentWindow.print();
+        }        function downloadPDF() {
+            // Show the loader
+            document.querySelector('.loader-container').style.display = 'flex';
+            
+            // Get user data from localStorage
+            const user = JSON.parse(localStorage.getItem('user')) || {};
+            const userId = user._id;
+            const cvId = localStorage.getItem('currentCvId');
+            
+            // Gather all data from localStorage
+            const data = {
+                userId: userId, // Include user ID for storing PDFs
+                cvId: cvId,     // Include CV ID for reference
+                fullName: localStorage.getItem('fullName') || '',
+                professionalTitle: localStorage.getItem('title') || '',
+                summary: localStorage.getItem('objective') || '',
+                contact: localStorage.getItem('contact') || '',
+                workExperience: JSON.parse(localStorage.getItem('workExperience') || '[]'),
+                education: JSON.parse(localStorage.getItem('education') || '[]'),
+                skills: localStorage.getItem('skills') || '',
+                languages: JSON.parse(localStorage.getItem('languages') || '[]'),
+                certifications: JSON.parse(localStorage.getItem('certifications') || '[]'),
+                website: localStorage.getItem('website') || '',
+                templatePath: localStorage.getItem('selectedTemplatePath') || localStorage.getItem('currentTemplate') || 'classicBold_temp.html'
+            };
+
+            fetch('http://localhost:3000/generate-pdf', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(resp => {
+                if (!resp.ok) throw new Error('Failed to generate PDF');
+                return resp.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'resume.pdf';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                    window.URL.revokeObjectURL(url);
+                    a.remove();
+                    // Hide the loader when download is complete
+                    document.querySelector('.loader-container').style.display = 'none';
+                }, 500);
+            })
+            .catch(err => {
+                // Hide the loader if there's an error
+                document.querySelector('.loader-container').style.display = 'none';
+                alert('Failed to generate PDF: ' + err.message);
+            });
+        }
+
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const userString = localStorage.getItem('user');
+            
+            if (userString) {
+                const user = JSON.parse(userString);
+                document.getElementById('login-btn').style.display = 'none';
+                document.getElementById('signup-btn').style.display = 'none';
+                document.getElementById('user-name').textContent = user.firstName || user.email;
+                document.getElementById('user-greeting').style.display = 'inline';
+                document.getElementById('logout-btn').style.display = 'inline';
+            }
+              // Logout functionality
+            document.getElementById('logout-btn').addEventListener('click', async function(e) {
+                e.preventDefault();
+                console.log('Logout button clicked');
+                
+                try {
+                    console.log('Sending logout request to server...');
+                    const response = await fetch('http://localhost:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    
+                    console.log('Logout response:', response);
+                    const data = await response.json();
+                    console.log('Logout data:', data);
+                    
+                    // Clear user from localStorage
+                    localStorage.removeItem('user');
+                    console.log('User data removed from localStorage');
+                    
+                    // Refresh the page
+                    window.location.reload();
+                } catch (err) {
+                    console.error('Logout error:', err);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

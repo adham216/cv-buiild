@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Andree Rocher – Resume</title>
+  <style>
+    /* Base reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #000;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      
+    }
+    /* Name */
+    .name {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 36px;
+      margin-bottom: 4px;
+    }
+    /* Title under name */
+    .title {
+      font-family: "Arial andale", "Segoe UI", Tahoma, sans-serif;
+      font-size: 14px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    /* Contact line */
+    .contact {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 11px;
+      margin-bottom: 24px;
+    }
+    /* Section headers */
+    .section {
+      font-family: "Arial Black", Gadget, sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #000;
+      padding-bottom: 4px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    /* Job / degree headings */
+    .item-header {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+    .item-header .company {
+      text-align: left;
+    }
+    .item-header .dates {
+      /* right-aligned dates */
+      font-style: italic;
+      font-weight: normal;
+    }
+    /* Item descriptions */
+    .item-bullets {
+      margin-top: 6px 0 12px 20px;
+    }
+    .item-bullets li {
+      margin-bottom: 4px;
+    }
+    /* Stand-alone paragraphs */
+    .paragraph {
+      margin-bottom: 12px;
+      font-family: "Arial Body", "Segoe UI", Tahoma, sans-serif;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <div class="name">Andree Rocher</div>
+  <div class="title">Professional Title</div>
+  <div class="contact">Philadelphia, PA | 705.555.0121 | andree@example.com</div>
+
+  <div class="section">Objective</div>
+  <div class="paragraph">
+    To obtain a challenging data scientist position in a dynamic and innovative organization where I can use my technical and analytical skills.
+  </div>
+
+  <div class="section">Experience</div>
+
+  <div class="item-header">
+    <span class="company">Company | Job title</span>
+    <span class="dates">Start date – End date</span>
+  </div>
+  
+  <p>Location</p>
+  
+  <description>Job description</description>
+
+  <div class="section">Education</div>
+
+  <div class="item-header">
+    <span class="company">University Name, Degree and College</span>
+    <span class="dates">20XX</span>
+  </div>
+  <div class="paragraph">
+    Major: Data Science | Minor: Machine Learning
+  </div>
+
+  <div class="section">Skills &amp; Abilities</div>
+ 
+  <p>skills</p>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Template script loaded");
+  
+  console.log("LocalStorage contents:");
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    console.log(key, localStorage.getItem(key));
+  }
+  
+  // grab your placeholders
+  const nameEl      = document.querySelector('.name');
+  const titleEl     = document.querySelector('.title');
+  const contactEl   = document.querySelector('.contact');
+  const objectiveEl = document.querySelector('.paragraph');
+  
+  // pull from localStorage
+  const fullName  = localStorage.getItem('fullName');
+  const profTitle = localStorage.getItem('title');
+  const contact   = localStorage.getItem('contact');
+  const objective = localStorage.getItem('objective');
+  
+  console.log("Retrieved data:", { fullName, profTitle, contact, objective });
+  
+  // only overwrite if present
+  if (fullName)  nameEl.textContent      = fullName;
+  if (profTitle) titleEl.textContent     = profTitle;
+  if (contact)   contactEl.textContent   = contact;
+  if (objective) objectiveEl.textContent = objective;
+
+  const we = localStorage.getItem('workExperience');
+  console.log("Work experience data:", we);
+  
+  if (we) {
+    try {
+      const data = JSON.parse(we);
+      const secs = Array.from(document.querySelectorAll('.section'));
+      const expHdr = secs.find(s => s.textContent.trim() === 'Experience');
+      
+      if (expHdr) {
+        // clear out the old placeholders
+        let n = expHdr.nextElementSibling;
+        while (n && !n.classList.contains('section')) {
+          const nxt = n.nextElementSibling;
+          n.remove();
+          n = nxt;
+        }
+        
+        data.forEach(item => {
+          if (!item.jobTitle && !item.company) return; // Skip empty entries
+          
+          const header = document.createElement('div');
+          header.className = 'item-header';
+          header.innerHTML = `
+            <span class="company">${item.company || ''} | ${item.jobTitle || ''}</span>
+            <span class="dates">${item.jobStartDate || ''} – ${(item.jobEndDate || 'Present')}</span>
+          `;
+          expHdr.parentNode.insertBefore(header, n);
+
+          // description as bullets or plain text
+          if (item.jobDescription) {
+            const descLines = item.jobDescription.split('\n').filter(l => l);
+            if (descLines.length > 1) {
+              const ul = document.createElement('ul');
+              ul.className = 'item-bullets';
+              descLines.forEach(line => {
+                const li = document.createElement('li');
+                li.textContent = line;
+                ul.appendChild(li);
+              });
+              expHdr.parentNode.insertBefore(ul, n);
+            } else {
+              const p = document.createElement('p');
+              p.textContent = item.jobLocation 
+                ? `${item.jobLocation}. ${descLines[0] || ''}` 
+                : (descLines[0] || '');
+              expHdr.parentNode.insertBefore(p, n);
+            }
+          } else {
+            // If no description, just show location
+            if (item.jobLocation) {
+              const p = document.createElement('p');
+              p.textContent = item.jobLocation;
+              expHdr.parentNode.insertBefore(p, n);
+            }
+          }
+        });
+      }
+    } catch (e) {
+      console.error('Error parsing work experience:', e);
+    }
+  }
+
+  const ed = localStorage.getItem('education');
+  console.log("Education data:", ed);
+  
+  if (ed) {
+    try {
+      const data = JSON.parse(ed);
+      const secs = Array.from(document.querySelectorAll('.section'));
+      const eduHdr = secs.find(s => s.textContent.trim() === 'Education');
+      
+      if (eduHdr) {
+        // remove old entries
+        let n = eduHdr.nextElementSibling;
+        while (n && !n.classList.contains('section')) {
+          const nxt = n.nextElementSibling;
+          n.remove();
+          n = nxt;
+        }
+        
+        // insert each degree
+        data.forEach(item => {
+          if (!item.degree && !item.institution) return; // Skip empty entries
+          
+          const header = document.createElement('div');
+          header.className = 'item-header';
+          header.innerHTML = `
+            <span class="company">${item.institution || ''}, ${item.degree || ''}</span>
+            <span class="dates">${item.eduStartDate || ''} – ${(item.eduEndDate || 'Present')}</span>
+          `;
+          eduHdr.parentNode.insertBefore(header, n);
+
+          const para = document.createElement('div');
+          para.className = 'paragraph';
+          let text = item.eduLocation || '';
+          if (item.eduAchievements) text += (text ? ' | ' : '') + item.eduAchievements;
+          para.textContent = text;
+          eduHdr.parentNode.insertBefore(para, n);
+        });
+      }
+    } catch (e) {
+      console.error('Error parsing education:', e);
+    }
+  }
+
+  const sk = localStorage.getItem('skills');
+  console.log("Skills data:", sk);
+  
+  if (sk) {
+    const secs = Array.from(document.querySelectorAll('.section'));
+    const skillsHdr = secs.find(s => /^Skills/i.test(s.textContent));
+    if (skillsHdr && skillsHdr.nextElementSibling) {
+
+      const skillLines = sk.split('\n').filter(s => s.trim());
+      if (skillLines.length > 1) {
+        const ul = document.createElement('ul');
+        ul.className = 'item-bullets';
+        skillLines.forEach(skill => {
+          const li = document.createElement('li');
+          li.textContent = skill.trim();
+          ul.appendChild(li);
+        });
+        skillsHdr.nextElementSibling.replaceWith(ul);
+      } else {
+        skillsHdr.nextElementSibling.textContent = sk;
+      }
+    }
+  }
+});
+  </script>
+
+
+</body>
+</html>

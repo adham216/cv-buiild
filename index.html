@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV & Portfolio Builder | Create Professional Resumes</title>
+    <meta name="description" content="Create professional CVs and portfolios in minutes. Choose from ATS-friendly templates and build resumes that help you land your dream job.">
+    <meta name="keywords" content="resume builder, CV builder, portfolio builder, professional resumes, job application, ATS templates, online resume">
+    <meta property="og:title" content="CV & Portfolio Builder | Create Professional Resumes">
+    <meta property="og:description" content="Build eye-catching CVs and portfolios that get you hired. No design skills required!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+      <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">ResumeBuilder</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="templates.html">Templates</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="FAQ.html" target="_blank">About us</a></li>
+                <li><a href="FAQ.html" target="_blank">FAQ</a></li>
+            </ul>
+            <div id="user-controls">
+                <a href="login.html" class="btn" id="login-btn">Login</a>
+                <a href="signup.html" class="btn btn-alt" style="margin-left: 10px;" id="signup-btn">Sign Up</a>
+                <span id="user-greeting" style="display: none;">Welcome, <span id="user-name"></span>!</span>
+                <a href="#" id="logout-btn" class="btn" style="display: none; margin-left: 10px;">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="container">
+            <h1>Create Professional CVs & Portfolios in Minutes</h1>
+            <p>Build eye-catching resumes and portfolios that help you stand out and land your dream job. No design skills required.</p>            <div class="hero-buttons">
+                <a href="resumeTemplates.html" class="btn">Build Your CV</a>
+                <a href="portfolioTemplates.html" class="btn btn-alt">Build Your Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Features That Make Us Special</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Professional Templates</h3>
+                    <p>Choose from dozens of ATS-friendly templates designed by hiring experts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>AI-Powered Content</h3>
+                    <p>Get smart suggestions to highlight your skills and experience effectively.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Platform</h3>
+                    <p>Create and edit your CV on any device - desktop, tablet, or mobile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose a Template</h3>
+                    <p>Select from our professionally designed templates that match your career goals.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Add Your Details</h3>
+                    <p>Fill in your information with our easy-to-use form and content suggestions.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Download & Share</h3>
+                    <p>Get your finalized CV in PDF, share online, or link directly to your portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Build Your Professional CV?</h2>
+            <p>Join thousands of job seekers who've successfully advanced their careers with our platform.</p>
+            <a href="login.html" class="btn">Get Started for Free</a>
+            <a href="templates.html" class="btn btn-outline">View Templates</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>ResumeBuilder</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Resume Tips</a></li>
+                    <li><a href="#">Cover Letter Guide</a></li>
+                    <li><a href="#">Interview Prep</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="FAQ.html" target="_blank">About Us</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="FAQ.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>        <div class="container">
+            <div class="copyright">
+                &copy; 2025 ResumeBuilder. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const userString = localStorage.getItem('user');
+            
+            if (userString) {
+                const user = JSON.parse(userString);
+                document.getElementById('login-btn').style.display = 'none';
+                document.getElementById('signup-btn').style.display = 'none';
+                document.getElementById('user-name').textContent = user.firstName || user.email;
+                document.getElementById('user-greeting').style.display = 'inline';
+                document.getElementById('logout-btn').style.display = 'inline';
+            }            // Logout functionality
+            document.getElementById('logout-btn').addEventListener('click', async function(e) {
+                e.preventDefault();
+                console.log('Logout button clicked');
+                
+                try {
+                    console.log('Sending logout request to server...');
+                    const response = await fetch('http://localhost:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    console.log('Logout response:', response);
+                    
+                    // Regardless of server response, clear local storage
+                    localStorage.removeItem('user');
+                    console.log('User data removed from localStorage');
+                    
+                    // Refresh the page
+                    window.location.href = 'index.html';
+                } catch (err) {
+                    console.error('Logout error:', err);
+                    // Still clear localStorage and refresh even if there's an error
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

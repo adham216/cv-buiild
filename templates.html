@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV, Resume & Portfolio Templates | ResumeBuilder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">ResumeBuilder</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="templates.html" class="active">Templates</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+      <div id="user-controls">
+        <a href="login.html" class="btn" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn-alt" style="margin-left: 10px;" id="signup-btn">Sign Up</a>
+        <span id="user-greeting" style="display: none;">Welcome, <span id="user-name"></span>!</span>
+        <a href="#" id="logout-btn" class="btn" style="display: none; margin-left: 10px;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="templates-hero">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="container">
+      <h1>Professional Templates</h1>
+      <p>Choose from our collection of ATS-friendly resume templates and portfolio showcases designed to help you stand out to recruiters and hiring managers.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <!-- Tab Navigation -->
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="resume-templates">Resume Templates</button>
+        <button class="tab-btn" data-tab="portfolio-templates">Portfolio Templates</button>
+      </div>
+
+      <!-- Resume Templates Tab -->
+      <div id="resume-templates" class="tab-content active">
+        <div class="filters">
+          <button class="filter-btn active" data-category="all">All Templates</button>
+          <button class="filter-btn" data-category="professional">Professional</button>
+          <button class="filter-btn" data-category="creative">Creative</button>
+          <button class="filter-btn" data-category="modern">Modern</button>
+          <button class="filter-btn" data-category="simple">Simple</button>
+          <button class="filter-btn" data-category="executive">Executive</button>
+          <button class="filter-btn" data-category="student">Student</button>
+        </div>
+
+        <div class="templates-grid">
+          <!-- Template Card 1 -->
+          <div class="template-card" data-categories="professional classic">
+            <div class="template-img">
+              <img
+                src="https://cdn.create.microsoft.com/catalog-assets/en-us/a6ce606f-4d1b-45e4-9923-de33195f45da/thumbnails/616/ats-bold-classic-resume-modern-simple-2-1-c955d388e942.webp"
+                alt="Classic Bold template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Classic Bold</h3>
+              <div class="template-tags">
+                <span class="template-tag">Professional</span>
+                <span class="template-tag">Classic</span>
+              </div>
+              <p>Perfect for senior positions and executive roles with a professional clean layout.</p>
+            </div>
+          </div>
+
+          <!-- Template Card 2 -->
+          <div class="template-card" data-categories="creative modern">
+            <div class="template-img">
+              <img
+                src="https://cdn.create.microsoft.com/catalog-assets/en-us/1138bdc2-5b51-4800-816d-fcf90d7e6af9/thumbnails/616/creative-teaching-resume-whimsical-2-1-b6a463aef820.webp"
+                alt="Creative Edge template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Creative Edge</h3>
+              <div class="template-tags">
+                <span class="template-tag">Creative</span>
+                <span class="template-tag">Modern</span>
+              </div>
+              <p>Bold and creative design for careers in design, marketing, and creative industries.</p>
+            </div>
+          </div>
+
+          <!-- Template Card 3 -->
+          <div class="template-card" data-categories="executive creative">
+            <div class="template-img">
+              <img
+                src="https://cdn.create.microsoft.com/catalog-assets/en-us/4b83e384-3f44-4f2a-a531-d077fe8afc40/thumbnails/616/cv-%2528resume%2529-modern-color-block-2-1-ac3909096b43.webp"
+                alt="Minimalist template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>CV Resume</h3>
+              <div class="template-tags">
+                <span class="template-tag">Executive</span>
+                <span class="template-tag">Creative</span>
+              </div>
+              <p>Clean and minimalist design letting your experience speak for itself.</p>
+            </div>
+          </div>
+
+          <!-- Template Card 4 -->
+          <div class="template-card" data-categories="tech modern">
+            <div class="template-img">
+              <img
+                src="https://create.microsoft.com/_next/image?url=https%3A%2F%2Fcdn.create.microsoft.com%2Fuploadedfiles%2Fuploads%2F2c96bb8c-03a1-4349-a13e-c9c2bf256f52-ats-finance-resume-2-1.webp&w=1920&q=90"
+                alt="Tech Innovator template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Dark Themed</h3>
+              <div class="template-tags">
+                <span class="template-tag">Tech</span>
+                <span class="template-tag">Modern</span>
+              </div>
+              <p>Designed for tech professionals with sections for projects and technical skills.</p>
+            
+            </div>
+          </div>
+
+          <!-- Template Card 5 -->
+          <div class="template-card" data-categories="student simple">
+            <div class="template-img">
+              <img
+                src="https://cdn.create.microsoft.com/catalog-assets/en-us/b97c34b7-bcc4-4366-92c6-8b5a08ba27cc/thumbnails/616/ats-stylish-accounting-resume-modern-simple-2-1-e282b79aeb83.webp"
+                alt="Graduate Focus template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Stylish Soft</h3>
+              <div class="template-tags">
+                <span class="template-tag">Student</span>
+                <span class="template-tag">Simple</span>
+              </div>
+              <p>Ideal for recent graduates focusing on education and relevant skills.</p>
+              
+            </div>
+          </div>
+
+          <!-- Template Card 6 -->
+          <div class="template-card" data-categories="executive modern">
+            <div class="template-img">
+              <img
+                src="https://cdn.create.microsoft.com/catalog-assets/en-us/591e685e-fff1-400f-9fdf-92cb88141bbd/thumbnails/616/simple-ats-healthcare-resume-purple-modern-simple-2-1-41374cba7641.webp"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Modern Chronological</h3>
+              <div class="template-tags">
+                <span class="template-tag">Executive</span>
+                <span class="template-tag">Modern</span>
+              </div>
+              <p>Premium design for C-suite executives and senior management positions.</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Templates Tab -->
+      <div id="portfolio-templates" class="tab-content">
+        <div class="filters">
+          <button class="filter-btn active" data-category="all">All Portfolios</button>
+          <button class="filter-btn" data-category="design">Design</button>
+          <button class="filter-btn" data-category="photography">Photography</button>
+          <button class="filter-btn" data-category="development">Development</button>
+          <button class="filter-btn" data-category="art">Art</button>
+        </div>
+
+        <div class="templates-grid">
+          <!-- Portfolio Template 1 -->
+          <div class="template-card" data-categories="design development">
+            <div class="template-img">
+              <img
+                src="https://videos.openai.com/vg-assets/assets%2Ftask_01jtavetgje9cbafhwnzxtgvjk%2F1746268611_img_0.webp?st=2025-05-10T09%3A05%3A16Z&se=2025-05-16T10%3A05%3A16Z&sks=b&skt=2025-05-10T09%3A05%3A16Z&ske=2025-05-16T10%3A05%3A16Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=EzaBw40GUJpslkrcEhfDub3EEFb3dkXYNwHtlaknzKE%3D&az=oaivgprodscus"
+                alt="Modern Designer portfolio template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Modern Designer</h3>
+              <div class="template-tags">
+                <span class="template-tag">Design</span>
+                <span class="template-tag">Development</span>
+              </div>
+              <p>Sleek, grid-based layout perfect for UX/UI designers and web developers.</p>
+              
+            </div>
+          </div>
+
+          <!-- Portfolio Template 2 -->
+          <div class="template-card" data-categories="photography art">
+            <div class="template-img">
+              <img
+                src="https://videos.openai.com/vg-assets/assets%2Ftask_01jtarrvbgfv08sv3kvqa0x2gj%2F1746265784_img_1.webp?st=2025-05-10T10%3A56%3A04Z&se=2025-05-16T11%3A56%3A04Z&sks=b&skt=2025-05-10T10%3A56%3A04Z&ske=2025-05-16T11%3A56%3A04Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=xxvo17pHzRtA9ThBZmkhY%2Bt5RMqwRcvI7hQxDJkpuGk%3D&az=oaivgprodscus"
+                alt="Visual Storyteller portfolio template preview"
+                class="template-preview"
+              >
+              <div class="template-overlay">
+                <a href="#" class="btn">View This Template</a>
+              </div>
+            </div>
+            <div class="template-info">
+              <h3>Visual Storyteller</h3>
+              <div class="template-tags">
+                <span class="template-tag">Photography</span>
+                <span class="template-tag">Art</span>
+              </div>
+              <p>Immersive full-screen galleries ideal for photographers and visual artists.</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Find The Perfect Template For Your Career</h2>
+      <p>Stand out from the competition with professionally designed templates tailored to your industry and experience level.</p>
+      <a href="#" class="btn">Create Your Resume Now</a>
+    </div>
+  </section>
+
+   <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>ResumeBuilder</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Resume Tips</a></li>
+                    <li><a href="#">Cover Letter Guide</a></li>
+                    <li><a href="#">Interview Prep</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2025 ResumeBuilder. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+  <!-- Full-screen modal for preview -->
+  <div id="previewModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Full template preview">
+  </div>
+
+  <script>
+    const modal = document.getElementById('previewModal');
+    const modalImg = document.getElementById('modalImg');
+
+    // Handle clicks on template preview images
+    document.querySelectorAll('.template-preview').forEach(img => {
+      img.addEventListener('click', e => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    // Handle clicks on "View This Template" buttons
+    document.querySelectorAll('.template-overlay .btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const templateCard = btn.closest('.template-card');
+        const img = templateCard.querySelector('.template-preview');
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    // Close modal when clicking on the close button
+    document.querySelector('.modal-close').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Tab switching functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons and contents
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Show corresponding content
+          const tabId = this.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+          
+          // Reset filter buttons in the active tab
+          const activeTabContent = document.getElementById(tabId);
+          const filterBtns = activeTabContent.querySelectorAll('.filter-btn');
+          filterBtns.forEach(filterBtn => filterBtn.classList.remove('active'));
+          filterBtns[0].classList.add('active');
+          
+          // Show all templates in the active tab
+          const templateCards = activeTabContent.querySelectorAll('.template-card');
+          templateCards.forEach(card => {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 10);
+          });
+        });
+      });
+    });
+
+    // Template filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabContents.forEach(tabContent => {
+        const filterButtons = tabContent.querySelectorAll('.filter-btn');
+        const templateCards = tabContent.querySelectorAll('.template-card');
+        
+        // Add event listeners to each filter button
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // Remove 'active' class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add 'active' class to the clicked button
+            this.classList.add('active');
+            
+            // Get the filter category from the button's data attribute
+            const filterCategory = this.getAttribute('data-category').toLowerCase();
+            
+            // Show all templates if "all" is selected
+            if (filterCategory === 'all' || filterCategory === 'all templates' || filterCategory === 'all portfolios') {
+              templateCards.forEach(card => {
+                card.style.display = 'block';
+                // Optional animation
+                setTimeout(() => {
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+                }, 10);
+              });
+            } else {
+              // Otherwise, filter templates by category
+              templateCards.forEach(card => {
+                // Get categories for this card
+                const cardCategories = card.getAttribute('data-categories').split(' ');
+                
+                // Check if card matches the filter category
+                if (cardCategories.includes(filterCategory)) {
+                  card.style.display = 'block';
+                  // Optional animation
+                  setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                  }, 10);
+                } else {
+                  // Add a nice fade-out effect
+                  card.style.opacity = '0';
+                  card.style.transform = 'translateY(20px)';
+                  setTimeout(() => {
+                    card.style.display = 'none';
+                  }, 300); // Match this timing with CSS transition
+                }
+              });
+            }          });
+        });
+      });
+    });
+    
+    // Check if user is logged in
+    document.addEventListener('DOMContentLoaded', function() {
+      const userString = localStorage.getItem('user');
+      
+      if (userString) {
+        const user = JSON.parse(userString);
+        document.getElementById('login-btn').style.display = 'none';
+        document.getElementById('signup-btn').style.display = 'none';
+        document.getElementById('user-name').textContent = user.firstName || user.email;
+        document.getElementById('user-greeting').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'inline';
+      }        // Logout functionality
+      document.getElementById('logout-btn').addEventListener('click', async function(e) {
+        e.preventDefault();
+        console.log('Logout button clicked');
+        
+        try {
+          console.log('Sending logout request to server...');
+          const response = await fetch('http://localhost:3000/logout', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          console.log('Logout response:', response);
+          
+          // Regardless of server response, clear local storage
+          localStorage.removeItem('user');
+          console.log('User data removed from localStorage');
+          
+          // Redirect to home page
+          window.location.href = 'index.html';
+        } catch (err) {
+          console.error('Logout error:', err);
+          // Still clear localStorage and redirect even if there's an error
+          localStorage.removeItem('user');
+          window.location.href = 'index.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

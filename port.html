@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Portfolio | PortfolioBuilder</title>    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Image Preview Styles */
+        .image-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            gap: 10px;
+        }
+        
+        .project-image-preview {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+        }
+        
+        /* Section description */
+        .section-description {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+          /* Dynamic List Styles */
+        .dynamic-list .list-item {
+            position: relative;
+            background-color: #212529;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .remove-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #343a40;
+            border: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 16px;
+            line-height: 22px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .remove-btn:hover {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        
+        /* Make all form sections visible by default */
+        .form-section {
+            display: block;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 30px;
+        }
+        
+        /* Dark theme form styles */
+        .form-section#projects-section .form-control,
+        .form-section#projects-section textarea,
+        .form-section#projects-section select {
+            background-color: #343a40;
+            border: 1px solid #495057;
+            color: #e9ecef;
+        }
+        
+        .form-section#projects-section .form-control::placeholder,
+        .form-section#projects-section textarea::placeholder {
+            color: #6c757d;
+        }
+        
+        .form-section#projects-section label {
+            color: #e9ecef;
+        }
+        
+        .form-section#projects-section .section-description {
+            color: #adb5bd;
+        }
+        
+        /* Update remove button hover state for dark theme */
+        .remove-btn:hover {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        
+        /* Update add button for dark theme */
+        .form-section#projects-section .add-btn {
+            color: #1E90FF;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 0;
+            margin-bottom: 20px;
+        }
+        
+        .form-section#projects-section .add-btn:hover {
+            color: #5eacee;
+            text-decoration: underline;
+        }
+        
+        /* Projects section background */
+        .form-section#projects-section {
+            background-color: #191d21;
+            padding: 30px;
+            border-radius: 8px;
+            border-bottom: 1px solid #343a40;
+        }
+        
+        /* Update navigation buttons for projects section */
+        .form-section#projects-section .action-buttons .btn {
+            background: linear-gradient(135deg, #f953c6, #5555dd);
+            border: none;
+            color: white;
+        }
+        
+        .form-section#projects-section .action-buttons .btn-outline {
+            background: transparent;
+            border: 1px solid #495057;
+            color: #e9ecef;
+        }
+        
+        .form-section#projects-section .action-buttons .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Action buttons consistent styling */
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        
+        .action-buttons .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 180px;
+            text-align: center;
+        }
+        
+        .action-buttons .btn-outline {
+            background: transparent;
+            border: 1px solid #495057;
+            color: #e9ecef;
+        }
+        
+        .action-buttons .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-section .action-buttons .btn {
+            background: linear-gradient(135deg, #f953c6, #5555dd);
+            border: none;
+            color: white;
+        }
+        
+        #create-portfolio {
+        background: linear-gradient(135deg, #f953c6, #b91d73, #8c1bab, #5555dd) !important;
+        }
+        
+        /* Project section heading */
+        .form-section#projects-section h3 {
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        /* Image Preview Styles - Dark Theme */
+        .form-section#projects-section .image-preview-container {
+            background-color: #212529;
+            border: 1px solid #343a40;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        
+        .form-section#projects-section .project-image-preview {
+            border: 1px solid #495057;
+        }
+          /* Add button styling for adding images */
+        .form-section#projects-section .image-uploads-container .add-btn {
+            background-color: #343a40;
+            color: #1E90FF;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .form-section#projects-section .image-uploads-container .add-btn:hover {
+            background-color: #1E90FF;
+            color: white;
+        }
+        
+        /* Custom file input styling for dark theme */
+        .form-section#projects-section input[type="file"] {
+            background-color: #343a40;
+            color: #e9ecef;
+            border: 1px solid #495057;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        
+        .form-section#projects-section input[type="file"]::-webkit-file-upload-button {
+            background-color: #495057;
+            color: #e9ecef;
+            border: none;
+            padding: 5px 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .form-section#projects-section input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: #5c6670;
+        }
+          /* Preview wrapper styles */
+        .preview-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .remove-preview-btn:hover {
+            background-color: #dc3545 !important;
+        }
+        
+        /* Template selection styling */
+        .form-section#template-section {
+            background-color: #191d21;
+            padding: 30px;
+            border-radius: 8px;
+            border-bottom: 1px solid #343a40;
+            margin-top: 40px;
+        }
+        
+        .form-section#template-section h3 {
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .template-preview-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #212529;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .template-selected .template-preview-container {
+            border: 2px solid #1E90FF;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.2);
+        }
+        
+        /* Mobile responsiveness improvements */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .form-section h3 {
+                font-size: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .action-buttons .btn {
+                width: 100%;
+            }
+            
+            .project-image-preview {
+                width: 80px;
+                height: 60px;
+            }
+            
+            .template-preview-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ResumeBuilder</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="templates.html">Templates</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+            <div id="user-controls">
+                <a href="login.html" class="btn" id="login-btn">Login</a>
+                <a href="signup.html" class="btn btn-alt" style="margin-left: 10px;" id="signup-btn">Sign Up</a>
+                <span id="user-greeting" style="display: none;">Welcome, <span id="user-name"></span>!</span>
+                <a href="#" id="logout-btn" class="btn" style="display: none; margin-left: 10px;">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="templates-hero">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="container">
+            <h1>Create Your Professional Portfolio</h1>
+            <p>Fill in your details below to create a personalized portfolio that stands out to employers.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="form-container">
+                
+                <form id="portfolio-form">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-section" id="personal-info">
+                        <h3>Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="professionalTitle">Professional Title *</label>
+                                <input type="text" id="professionalTitle" class="form-control" placeholder="e.g. Senior Software Engineer" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" class="form-control" placeholder="City, Country">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Portfolio/Website</label>
+                                <input type="url" id="website" class="form-control" placeholder="https://yourwebsite.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="linkedin">LinkedIn Profile</label>
+                                <input type="url" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                            <div class="form-group">
+                                <label for="github">GitHub Profile</label>
+                                <input type="url" id="github" class="form-control" placeholder="https://github.com/yourusername">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="summary">Professional Summary</label>
+                                <textarea id="summary" class="form-control" placeholder="Briefly describe your professional background and key strengths"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                          
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Work Experience -->
+                    <div class="form-section" id="work-experience">
+                        <h3>Work Experience</h3>
+                        
+                        <div id="experience-list" class="dynamic-list">
+                            <div class="list-item">
+                                <button type="button" class="remove-btn">×</button>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Job Title *</label>
+                                        <input type="text" class="form-control" name="jobTitle[]" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Company/Organization *</label>
+                                        <input type="text" class="form-control" name="company[]" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Start Date *</label>
+                                        <input type="month" class="form-control" name="jobStartDate[]" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Date (or "Present")</label>
+                                        <input type="month" class="form-control" name="jobEndDate[]">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <input type="text" class="form-control" name="jobLocation[]" placeholder="City, Country">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Description/Achievements </label>
+                                        <textarea class="form-control" name="jobDescription[]" placeholder="Describe your responsibilities and achievements"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <button type="button" id="add-experience" class="add-btn">+ Add Another Position</button>
+                        
+                        <div class="action-buttons">
+                          
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Projects -->
+                    <div class="form-section" id="projects-section">
+                        <h3>Projects</h3>
+                        <p class="section-description">Add your notable projects to showcase your skills and capabilities.</p>
+                        
+                        <div id="projects-container" class="dynamic-list">
+                            <div class="list-item">
+                                <button type="button" class="remove-btn">×</button>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Project Title *</label>
+                                        <input type="text" class="form-control" name="projectTitle[]" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Project Description *</label>
+                                        <textarea class="form-control" name="projectDescription[]" rows="3" placeholder="Describe the project, your role, and key features" required></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Project Link (Optional)</label>
+                                        <input type="url" class="form-control" name="projectUrl[]" placeholder="https://...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Completion Date</label>
+                                        <input type="month" class="form-control" name="projectDate[]">
+                                    </div>
+                                </div>
+                                  <div class="form-group">
+                                    <label>Project Images</label>
+                                    <div class="image-uploads-container">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <input type="file" class="form-control project-image-file" name="projectImageFile[]" accept="image/*" onchange="previewImage(this)">
+                                            </div>
+                                            <div class="form-group" style="flex: 0 0 auto; margin-left: 10px;">
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="image-preview-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                          <button type="button" id="add-project" class="add-btn">+ Add Another Project</button>
+                        
+                        <div class="action-buttons">
+                          
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Education & Skills -->
+                    <div class="form-section" id="education-skills">
+                        <h3>Education</h3>
+                        
+                        <div id="education-list" class="dynamic-list">
+                            <div class="list-item">
+                                <button type="button" class="remove-btn">×</button>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Degree/Certificate *</label>
+                                        <input type="text" class="form-control" name="degree[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Institution *</label>
+                                        <input type="text" class="form-control" name="institution[]">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Start Date</label>
+                                        <input type="month" class="form-control" name="eduStartDate[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Date (or "Present")</label>
+                                        <input type="month" class="form-control" name="eduEndDate[]">
+                                    </div>
+                                </div>
+                                <div class="form-row">                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <input type="text" class="form-control" name="eduLocation[]" placeholder="City, Country">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Major/Achievements</label>
+                                        <input type="text" class="form-control" name="eduAchievements[]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="add-education" class="add-btn">+ Add Another Education</button>
+                        
+                        <h3>Skills</h3>
+                        
+                        <div class="form-row">                            <div class="form-group">
+                                <label for="skills">Professional Skills </label>
+                                <textarea id="skills" class="form-control" placeholder="Enter each skill on a new line"></textarea>
+                            </div>
+                        </div>
+                        
+                        
+                        <h3>Certifications</h3>
+                        
+                        <div id="certification-list" class="dynamic-list">
+                            <div class="list-item">
+                                <button type="button" class="remove-btn">×</button>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Certification Name</label>
+                                        <input type="text" class="form-control" name="certName[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Issuing Organization</label>
+                                        <input type="text" class="form-control" name="certOrg[]">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Date Issued</label>
+                                        <input type="month" class="form-control" name="certDate[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Expiration Date (if applicable)</label>
+                                        <input type="month" class="form-control" name="certExpiry[]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <button type="button" id="add-certification" class="add-btn">+ Add Another Certification</button>
+                        
+                        <div class="action-buttons">
+                     
+                    </div>
+                      <!-- Template Selection Section -->
+            <div class="form-section" id="template-section">
+                <h3>Selected Template</h3>
+                <p class="section-description">This is the template that will be used for your portfolio.</p>
+                  <div class="template-preview-container">
+                    <img id="selected-template-img"
+                        src="https://via.placeholder.com/600x400?text=No+Template+Selected"
+                        alt="Selected Template Preview"
+                        style="max-width:100%; height:auto; min-height:250px; border-radius:8px; box-shadow:0 5px 15px rgba(0,0,0,0.3); display:block; margin:0 auto;"/>
+                    <p id="selected-template-name"
+                        style="margin-top:1rem; font-size:1.1rem; font-weight: 600; color:#e9ecef;">
+                        No template selected
+                    </p>
+                    <p id="template-description" style="color:#adb5bd; margin-bottom:1.5rem;">
+                        Select a template to create your portfolio
+                    </p>
+                    <a href="portfolioTemplates.html" class="btn" style="margin-top:1rem; background: linear-gradient(135deg, #f953c6, #5555dd);">Change Template</a>
+                </div>
+                
+                <input type="hidden" id="selected-template" name="selected-template" value="">
+            </div>                      <div class="action-buttons">
+                        <button type="button" class="btn btn-outline" id="back-to-personal">Back to personal-info</button>
+                        <button type="submit" class="btn" id="create-portfolio">Create My Portfolio</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready To Stand Out From The Crowd?</h2>
+            <p>With a professionally designed portfolio from ResumeBuilder, you'll catch the attention of recruiters and hiring managers.</p>
+            <a href="#" class="btn">Explore portfolio Tips</a>
+        </div>
+    </section>
+
+     <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>ResumeBuilder</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Resume Tips</a></li>
+                    <li><a href="#">Cover Letter Guide</a></li>
+                    <li><a href="#">Interview Prep</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; 2025 ResumeBuilder. All rights reserved.
+            </div>
+        </div>    </footer>    
+    
+     <script src="portfolioTemplate.js"></script>
+     <script src="port_js.js"></script>
+
+    <script>
+    // Project images functions
+    function previewImage(input) {
+        // Check if file is selected
+        if (!input.files || !input.files[0]) return;
+        
+        const file = input.files[0];
+        const listItem = input.closest('.list-item');
+        const previewContainer = listItem.querySelector('.image-preview-container');
+        
+        // Validate file size (max 5MB)
+        const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
+        if (file.size > maxSizeInBytes) {
+            alert('File size must be less than 5MB. Please select a smaller image.');
+            input.value = ''; // Clear the input
+            return;
+        }
+        
+        // Create image preview
+        const preview = document.createElement('img');
+        preview.className = 'project-image-preview';
+        preview.alt = 'Project image preview';
+        
+        // Use FileReader to read the file and set the image source
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        
+        // Create a container div to hold the image and its index
+        const previewWrapper = document.createElement('div');
+        previewWrapper.className = 'preview-wrapper';
+        previewWrapper.style.position = 'relative';
+        previewWrapper.style.display = 'inline-block';
+        previewWrapper.style.marginRight = '10px';
+        
+        // Add remove button for each preview
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'remove-preview-btn';
+        removeBtn.innerHTML = '×';
+        removeBtn.style.position = 'absolute';
+        removeBtn.style.top = '2px';
+        removeBtn.style.right = '2px';
+        removeBtn.style.width = '20px';
+        removeBtn.style.height = '20px';
+        removeBtn.style.borderRadius = '50%';
+        removeBtn.style.background = '#343a40';
+        removeBtn.style.color = 'white';
+        removeBtn.style.border = 'none';
+        removeBtn.style.cursor = 'pointer';
+        removeBtn.style.fontSize = '14px';
+        removeBtn.style.lineHeight = '20px';
+        removeBtn.style.padding = '0';
+        removeBtn.style.textAlign = 'center';
+        
+        removeBtn.onclick = function() {
+            previewContainer.removeChild(previewWrapper);
+        };
+        
+        previewWrapper.appendChild(preview);
+        previewWrapper.appendChild(removeBtn);
+        previewContainer.appendChild(previewWrapper);
+        
+        // Clear the file input to allow selecting the same file again
+        input.value = '';
+    }
+    
+    function addProjectImage(button) {
+        const container = button.closest('.image-uploads-container');
+        const imageInputs = container.querySelectorAll('.project-image-file');
+        
+        // Limit to 5 images per project
+        const listItem = button.closest('.list-item');
+        const previewContainer = listItem.querySelector('.image-preview-container');
+        const existingPreviews = previewContainer.querySelectorAll('.preview-wrapper');
+        
+        if (existingPreviews.length >= 5) {
+            alert('Maximum 5 images allowed per project');
+            return;
+        }
+        
+        // Create new file input
+        const row = document.createElement('div');
+        row.className = 'form-row';
+        row.innerHTML = `
+            <div class="form-group">
+                <input type="file" class="form-control project-image-file" name="projectImageFile[]" accept="image/*" onchange="previewImage(this)">
+            </div>
+            <div class="form-group" style="flex: 0 0 auto; margin-left: 10px;">
+                <button type="button" class="remove-btn" onclick="removeProjectImage(this)">×</button>
+            </div>
+        `;
+        
+        container.appendChild(row);
+    }
+    
+    function removeProjectImage(button) {
+        const row = button.closest('.form-row');
+        const container = row.parentElement;
+        
+        // If this is the last image input, don't remove it
+        if (container.querySelectorAll('.form-row').length > 1) {
+            container.removeChild(row);
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Setup dynamic add/remove for projects
+        document.getElementById('add-project').addEventListener('click', function() {
+            const template = document.querySelector('#projects-container .list-item').cloneNode(true);
+            
+            // Clear values
+            template.querySelectorAll('input, textarea, select').forEach(el => {
+                if (el.tagName === 'SELECT') {
+                    el.selectedIndex = 0;
+                } else {
+                    el.value = '';
+                }
+            
+            // Clear image previews
+            const imagePreviewContainer = template.querySelector('.image-preview-container');
+            if (imagePreviewContainer) {
+                imagePreviewContainer.innerHTML = '';
+            }
+            
+            // Setup remove button
+            const removeBtn = template.querySelector('.remove-btn');
+            removeBtn.addEventListener('click', function() {
+                const parent = template.parentElement;
+                if (parent.querySelectorAll('.list-item').length > 1) {
+                    parent.removeChild(template);
+                }
+            });
+            
+            document.getElementById('projects-container').appendChild(template);
+        });
+        
+        // Setup initial remove buttons
+        document.querySelectorAll('#projects-container .list-item .remove-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.closest('.list-item');
+                const parent = item.parentElement;
+                if (parent.querySelectorAll('.list-item').length > 1) {
+                    parent.removeChild(item);
+                }
+            });
+        });
+    });
+    </script>
+    
+    <script>
+    // Save form data to localStorage
+    document.getElementById('save-draft').addEventListener('click', function() {
+        saveFormData();
+        alert('Your portfolio data has been saved as a draft.');
+    });    // Form submission handling
+    document.getElementById('portfolio-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validateForm()) {
+            saveFormData();
+            
+            // Get selected template
+            const selectedTemplate = document.getElementById('selected-template').value || 'ModernDesigner_ptemp.html';
+            console.log('Submitting form with template:', selectedTemplate);
+            
+            // Redirect to the template with the data
+            window.location.href = selectedTemplate;
+        }
+    });
+    
+    function saveFormData() {
+        // Collection for basic personal information
+        const personalInfo = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            fullName: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+            professionalTitle: document.getElementById('professionalTitle').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            location: document.getElementById('location').value,
+            website: document.getElementById('website').value,
+            linkedin: document.getElementById('linkedin').value,
+            github: document.getElementById('github').value,
+            summary: document.getElementById('summary').value
+        };
+        
+        // Collection for work experience
+        const experiences = [...document.querySelectorAll('#experience-list .list-item')].map(item => ({
+            jobTitle: item.querySelector('[name="jobTitle[]"]').value,
+            company: item.querySelector('[name="company[]"]').value,
+            startDate: item.querySelector('[name="jobStartDate[]"]').value,
+            endDate: item.querySelector('[name="jobEndDate[]"]').value || 'Present',
+            location: item.querySelector('[name="jobLocation[]"]').value,
+            description: item.querySelector('[name="jobDescription[]"]').value
+        })).filter(exp => exp.jobTitle && exp.company);
+          // Collection for projects
+        const projects = [...document.querySelectorAll('#projects-container .list-item')].map(item => {
+            // Get all preview images for this project
+            const previewContainer = item.querySelector('.image-preview-container');
+            const imageElements = previewContainer.querySelectorAll('.project-image-preview');
+            const imageSrcs = Array.from(imageElements).map(img => img.src);
+            
+            return {
+                title: item.querySelector('[name="projectTitle[]"]').value,
+                category: item.querySelector('[name="projectCategory[]"]').value,
+                description: item.querySelector('[name="projectDescription[]"]').value,
+                url: item.querySelector('[name="projectUrl[]"]').value,
+                date: item.querySelector('[name="projectDate[]"]').value,
+                images: imageSrcs // This will contain the base64 data URLs
+            };
+        }).filter(project => project.title);
+        
+        // Collection for education
+        const education = [...document.querySelectorAll('#education-list .list-item')].map(item => ({
+            degree: item.querySelector('[name="degree[]"]').value,
+            institution: item.querySelector('[name="institution[]"]').value,
+            startDate: item.querySelector('[name="eduStartDate[]"]').value,
+            endDate: item.querySelector('[name="eduEndDate[]"]').value || 'Present',
+            location: item.querySelector('[name="eduLocation[]"]').value,
+            achievements: item.querySelector('[name="eduAchievements[]"]').value
+        })).filter(edu => edu.degree && edu.institution);
+        
+        // Skills from textarea, separated by new lines
+        const skills = document.getElementById('skills').value
+            .split('\n')
+            .map(skill => skill.trim())
+            .filter(skill => skill);
+          // Certifications
+        const certifications = [...document.querySelectorAll('#certification-list .list-item')].map(item => ({
+            name: item.querySelector('[name="certName[]"]').value,
+            organization: item.querySelector('[name="certOrg[]"]').value,
+            issueDate: item.querySelector('[name="certDate[]"]').value,
+            expiryDate: item.querySelector('[name="certExpiry[]"]').value
+        })).filter(cert => cert.name && cert.organization);
+        
+        // Save all data to localStorage
+        localStorage.setItem('portfolioPersonalInfo', JSON.stringify(personalInfo));
+        localStorage.setItem('portfolioExperiences', JSON.stringify(experiences));
+        localStorage.setItem('portfolioProjects', JSON.stringify(projects));
+        localStorage.setItem('portfolioEducation', JSON.stringify(education));
+        localStorage.setItem('portfolioSkills', JSON.stringify(skills));
+        localStorage.setItem('portfolioCertifications', JSON.stringify(certifications));
+    }
+    
+    function validateForm() {
+        let isValid = true;
+        
+        // Validate required personal information
+        const requiredFields = [
+            document.getElementById('firstName'),
+            document.getElementById('lastName'),
+            document.getElementById('professionalTitle'),
+            document.getElementById('email'),
+            document.getElementById('phone')
+        ];
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                field.classList.add('invalid');
+                isValid = false;
+            } else {
+                field.classList.remove('invalid');
+            }
+        });
+        
+        // Validate at least one project has a title and description
+        const projects = document.querySelectorAll('#projects-container .list-item');
+        let hasValidProject = false;
+        
+        projects.forEach(project => {
+            const titleField = project.querySelector('[name="projectTitle[]"]');
+            const descField = project.querySelector('[name="projectDescription[]"]');
+            
+            if (titleField.value.trim() && descField.value.trim()) {
+                hasValidProject = true;
+                titleField.classList.remove('invalid');
+                descField.classList.remove('invalid');
+            }
+        });
+        
+        if (!hasValidProject && projects.length > 0) {
+            projects[0].querySelector('[name="projectTitle[]"]').classList.add('invalid');
+            projects[0].querySelector('[name="projectDescription[]"]').classList.add('invalid');
+            isValid = false;
+        }
+        
+        if (!isValid) {
+            alert('Please fill in all required fields marked with *');
+        }
+        
+        return isValid;
+    }
+    
+    // CSS for invalid fields
+    const style = document.createElement('style');
+    style.textContent = `
+        .form-control.invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+    `;
+    document.head.appendChild(style);
+</script>    <script>    // Load saved data when page loads    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM content loaded, initializing application...');
+        // Load saved form data
+        loadSavedData();
+        
+        // Initialize template preview with proper error handling
+        initializePortfolioTemplatePreview();
+    });
+        
+        // If a template was selected from URL, update the preview
+        if (templateFile) {
+            console.log('Template from URL:', templateFile);
+            updateTemplatePreview(templateFile);
+        } 
+        // Otherwise try loading saved template from localStorage
+        else {
+            const savedTemplate = localStorage.getItem('selectedPortfolioTemplate');
+            if (savedTemplate) {
+                console.log('Template from localStorage:', savedTemplate);
+                updateTemplatePreview(savedTemplate);
+            }
+        }
+    });
+    
+    function loadSavedData() {
+        try {
+            // Load personal info
+            const personalInfo = JSON.parse(localStorage.getItem('portfolioPersonalInfo'));
+            if (personalInfo) {
+                document.getElementById('firstName').value = personalInfo.firstName || '';
+                document.getElementById('lastName').value = personalInfo.lastName || '';
+                document.getElementById('professionalTitle').value = personalInfo.professionalTitle || '';
+                document.getElementById('email').value = personalInfo.email || '';
+                document.getElementById('phone').value = personalInfo.phone || '';
+                document.getElementById('location').value = personalInfo.location || '';
+                document.getElementById('website').value = personalInfo.website || '';
+                document.getElementById('linkedin').value = personalInfo.linkedin || '';
+                document.getElementById('github').value = personalInfo.github || '';
+                document.getElementById('summary').value = personalInfo.summary || '';
+            }
+            
+            // Load work experience
+            const experiences = JSON.parse(localStorage.getItem('portfolioExperiences'));
+            if (experiences && experiences.length > 0) {
+                const container = document.getElementById('experience-list');
+                container.innerHTML = ''; // Clear default item
+                
+                experiences.forEach(exp => {
+                    const template = document.createElement('div');
+                    template.className = 'list-item';
+                    template.innerHTML = `
+                        <button type="button" class="remove-btn">×</button>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Job Title *</label>
+                                <input type="text" class="form-control" name="jobTitle[]" required value="${exp.jobTitle || ''}">
+                            </div>
+                            <div class="form-group">
+                                <label>Company/Organization *</label>
+                                <input type="text" class="form-control" name="company[]" required value="${exp.company || ''}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Start Date *</label>
+                                <input type="month" class="form-control" name="jobStartDate[]" required value="${exp.startDate || ''}">
+                            </div>
+                            <div class="form-group">
+                                <label>End Date (or "Present")</label>
+                                <input type="month" class="form-control" name="jobEndDate[]" value="${exp.endDate === 'Present' ? '' : (exp.endDate || '')}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" class="form-control" name="jobLocation[]" placeholder="City, Country" value="${exp.location || ''}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Description/Achievements</label>
+                                <textarea class="form-control" name="jobDescription[]" placeholder="Describe your responsibilities and achievements">${exp.description || ''}</textarea>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Setup remove button
+                    const removeBtn = template.querySelector('.remove-btn');
+                    removeBtn.addEventListener('click', function() {
+                        const container = template.parentElement;
+                        if (container.querySelectorAll('.list-item').length > 1) {
+                            container.removeChild(template);
+                        }
+                    });
+                    
+                    container.appendChild(template);
+                });
+            }
+            
+            // Load projects
+            const projects = JSON.parse(localStorage.getItem('portfolioProjects'));
+            if (projects && projects.length > 0) {
+                const container = document.getElementById('projects-container');
+                container.innerHTML = ''; // Clear default item
+                
+                projects.forEach(project => {
+                    const template = document.createElement('div');
+                    template.className = 'list-item';
+                    template.innerHTML = `
+                        <button type="button" class="remove-btn">×</button>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Project Title *</label>
+                                <input type="text" class="form-control" name="projectTitle[]" required value="${project.title || ''}">
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" name="projectCategory[]">
+                                    <option value="web" ${project.category === 'web' ? 'selected' : ''}>Web Development</option>
+                                    <option value="mobile" ${project.category === 'mobile' ? 'selected' : ''}>Mobile App</option>
+                                    <option value="design" ${project.category === 'design' ? 'selected' : ''}>UI/UX Design</option>
+                                    <option value="illustration" ${project.category === 'illustration' ? 'selected' : ''}>Illustration</option>
+                                    <option value="photography" ${project.category === 'photography' ? 'selected' : ''}>Photography</option>
+                                    <option value="3d" ${project.category === '3d' ? 'selected' : ''}>3D/Animation</option>
+                                    <option value="other" ${project.category === 'other' ? 'selected' : ''}>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Project Description *</label>
+                                <textarea class="form-control" name="projectDescription[]" rows="3" placeholder="Describe the project, your role, and key features" required>${project.description || ''}</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Project Link (Optional)</label>
+                                <input type="url" class="form-control" name="projectUrl[]" placeholder="https://..." value="${project.url || ''}">
+                            </div>
+                            <div class="form-group">
+                                <label>Completion Date</label>
+                                <input type="month" class="form-control" name="projectDate[]" value="${project.date || ''}">
+                            </div>
+                        </div>
+                          <div class="form-group">
+                            <label>Project Images</label>
+                            <div class="image-uploads-container">
+                            </div>
+                            <div class="image-preview-container"></div>
+                        </div>
+                    `;
+                    
+                    // Add file input
+                    const imageContainer = template.querySelector('.image-uploads-container');
+                    const row = document.createElement('div');
+                    row.className = 'form-row';
+                    row.innerHTML = `
+                        <div class="form-group">
+                            <input type="file" class="form-control project-image-file" name="projectImageFile[]" accept="image/*" onchange="previewImage(this)">
+                        </div>
+                        <div class="form-group" style="flex: 0 0 auto; margin-left: 10px;">
+                            <button type="button" class="add-btn" onclick="addProjectImage(this)">+ Add Image</button>
+                        </div>
+                    `;
+                    imageContainer.appendChild(row);
+                    
+                    // Add image previews if available
+                    if (project.images && project.images.length > 0) {
+                        const previewContainer = template.querySelector('.image-preview-container');
+                        
+                        project.images.forEach(imageSrc => {
+                            if (imageSrc) {
+                                // Create a preview wrapper
+                                const previewWrapper = document.createElement('div');
+                                previewWrapper.className = 'preview-wrapper';
+                                previewWrapper.style.position = 'relative';
+                                previewWrapper.style.display = 'inline-block';
+                                previewWrapper.style.marginRight = '10px';
+                                
+                                // Create the image element
+                                const preview = document.createElement('img');
+                                preview.className = 'project-image-preview';
+                                preview.src = imageSrc;
+                                preview.alt = 'Project image preview';
+                                
+                                // Add remove button
+                                const removeBtn = document.createElement('button');
+                                removeBtn.type = 'button';
+                                removeBtn.className = 'remove-preview-btn';
+                                removeBtn.innerHTML = '×';
+                                removeBtn.style.position = 'absolute';
+                                removeBtn.style.top = '2px';
+                                removeBtn.style.right = '2px';
+                                removeBtn.style.width = '20px';
+                                removeBtn.style.height = '20px';
+                                removeBtn.style.borderRadius = '50%';
+                                removeBtn.style.background = '#343a40';
+                                removeBtn.style.color = 'white';
+                                removeBtn.style.border = 'none';
+                                removeBtn.style.cursor = 'pointer';
+                                removeBtn.style.fontSize = '14px';
+                                removeBtn.style.lineHeight = '20px';
+                                removeBtn.style.padding = '0';
+                                removeBtn.style.textAlign = 'center';
+                                
+                                removeBtn.onclick = function() {
+                                    previewContainer.removeChild(previewWrapper);
+                                };
+                                
+                                previewWrapper.appendChild(preview);
+                                previewWrapper.appendChild(removeBtn);
+                                previewContainer.appendChild(previewWrapper);
+                            }
+                        });
+                    }
+                    
+                    // Setup remove button
+                    const removeBtn = template.querySelector('.remove-btn');
+                    removeBtn.addEventListener('click', function() {
+                        if (container.querySelectorAll('.list-item').length > 1) {
+                            container.removeChild(template);
+                        }
+                    });
+                    
+                    container.appendChild(template);
+                });
+            }
+            
+            // Load education, skills, certifications data here...
+            
+        } catch (e) {
+            console.error('Error loading saved data:', e);
+        }
+    }      function updateTemplatePreview(templateFile) {
+        const templateName = templateFile.replace('.html', '').replace('_ptemp', '').replace(/([A-Z])/g, ' $1').trim();
+        document.getElementById('selected-template-name').textContent = templateName + ' Template';
+        document.getElementById('selected-template').value = templateFile;
+        
+        // Set template description based on selected template
+        let description = '';
+        if (templateFile.includes('ModernDesigner')) {
+            description = 'A clean, professional template perfect for designers and creative professionals.';
+        } else if (templateFile.includes('VisualShowcase')) {
+            description = 'A visually striking template ideal for photographers, artists, and visual portfolios.';
+        }
+        document.getElementById('template-description').textContent = description;
+        
+        // Set preview image based on template
+        let previewSrc = '';
+        if (templateFile.includes('ModernDesigner')) {
+            previewSrc = "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+        } else if (templateFile.includes('VisualShowcase')) {
+            previewSrc = "https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+        }
+        
+        // Get the image element and set up error handling
+        const imgElement = document.getElementById('selected-template-img');
+        
+        // Set up error handling for the image
+        imgElement.onerror = function() {
+            console.error('Error loading image:', previewSrc);
+            // Try a fallback image
+            imgElement.src = 'https://via.placeholder.com/600x400?text=Template+Preview';
+        };
+        
+        // Set the image source if available
+        if (previewSrc) {
+            imgElement.src = previewSrc;
+        } else {
+            imgElement.src = 'https://via.placeholder.com/600x400?text=Template+Preview';
+        }
+        
+        // Update template section styling to show it's selected
+        const templateSection = document.getElementById('template-section');
+        templateSection.classList.add('template-selected');
+        
+        // Save template selection to localStorage
+        localStorage.setItem('selectedPortfolioTemplate', templateFile);
+        localStorage.setItem('selectedPortfolioTemplateName', templateName);
+    }
+    
+    // Add debugging for template images
+    function initializeTemplatePreview() {
+        console.log('Initializing template preview...');
+        
+        // Initialize template preview container with a default image
+        const selectedTemplateImg = document.getElementById('selected-template-img');
+        if (selectedTemplateImg) {
+            console.log('Template image element found');
+            // Set a default source if none exists
+            if (!selectedTemplateImg.src || selectedTemplateImg.src === '') {
+                selectedTemplateImg.src = 'https://via.placeholder.com/600x400?text=No+Template+Selected';
+                console.log('Set default template image');
+            }
+            
+            // Add error handler
+            selectedTemplateImg.onerror = function() {
+                console.error('Error loading template image, using fallback');
+                this.src = 'https://via.placeholder.com/600x400?text=Template+Preview';
+            };
+        } else {
+            console.error('Template image element not found!');
+        }
+        
+        // Get template from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const templateFile = urlParams.get('template');
+        
+        if (templateFile) {
+            console.log('Template from URL:', templateFile);
+            updateTemplatePreview(templateFile);
+        } else {
+            const savedTemplate = localStorage.getItem('selectedPortfolioTemplate');
+            if (savedTemplate) {
+                console.log('Template from localStorage:', savedTemplate);
+                updateTemplatePreview(savedTemplate);
+            } else {
+                console.log('No template selected, using default');
+            }
+        }
+    }
+</script>
+  
+    <script>
+    // Setup section navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add navigation between the projects section and other sections
+        const personalSection = document.getElementById('personal-info');
+        const experienceSection = document.getElementById('work-experience');
+        const projectsSection = document.getElementById('projects-section');
+        const educationSection = document.getElementById('education-skills');
+        const templateSection = document.getElementById('template-section');
+        
+        // Back to Personal Info
+        const backToPersonalBtn = document.getElementById('back-to-personal');
+        if (backToPersonalBtn) {
+            backToPersonalBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: personalSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Next to Experience
+        const nextToExperienceBtn = document.getElementById('next-to-experience');
+        if (nextToExperienceBtn) {
+            nextToExperienceBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: experienceSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Back to Experience
+        const backToExperienceBtn = document.getElementById('back-to-experience');
+        if (backToExperienceBtn) {
+            backToExperienceBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: experienceSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Next to Projects
+        const nextToProjectsBtn = document.getElementById('next-to-projects');
+        if (nextToProjectsBtn) {
+            nextToProjectsBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: projectsSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Back to Projects
+        const backToProjectsBtn = document.getElementById('back-to-projects');
+        if (backToProjectsBtn) {
+            backToProjectsBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: projectsSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Next to Education
+        const nextToEducationBtn = document.getElementById('next-to-education');
+        if (nextToEducationBtn) {
+            nextToEducationBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: educationSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Back to Education
+        const backToEducationBtn = document.getElementById('back-to-education');
+        if (backToEducationBtn) {
+            backToEducationBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: educationSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Next to Template
+        const nextToTemplateBtn = document.getElementById('next-to-template');
+        if (nextToTemplateBtn) {
+            nextToTemplateBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: templateSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Make all sections visible by default
+        document.querySelectorAll('.form-section').forEach(section => {
+            section.style.display = 'block';
+        });
+    });
+</script>
+  
+    <script>
+    // Initialize all dynamic components
+    document.addEventListener('DOMContentLoaded', function() {
+        // Setup save draft functionality if the button exists
+        const saveDraftBtn = document.getElementById('save-draft');
+        if (saveDraftBtn) {
+            saveDraftBtn.addEventListener('click', function() {
+                saveFormData();
+                alert('Your portfolio data has been saved as a draft.');
+            });
+        }
+        
+        // Setup add experience functionality
+        const addExperienceBtn = document.getElementById('add-experience');
+        if (addExperienceBtn) {
+            addExperienceBtn.addEventListener('click', function() {
+                addDynamicItem('experience-list', 'experience');
+            });
+        }
+        
+        // Setup add education functionality
+        const addEducationBtn = document.getElementById('add-education');
+        if (addEducationBtn) {
+            addEducationBtn.addEventListener('click', function() {
+                addDynamicItem('education-list', 'education');
+            });
+        }
+        
+        // Setup add certification functionality
+        const addCertificationBtn = document.getElementById('add-certification');
+        if (addCertificationBtn) {
+            addCertificationBtn.addEventListener('click', function() {
+                addDynamicItem('certification-list', 'certification');
+            });
+        }
+        
+        // Setup remove buttons for all dynamic lists
+        setupRemoveButtons();
+        
+        // Load saved data
+        loadSavedData();
+        
+        // Get template from URL or localStorage
+        const urlParams = new URLSearchParams(window.location.search);
+        const templateFile = urlParams.get('template');
+        
+        if (templateFile) {
+            updateTemplatePreview(templateFile);
+        } else {
+            const savedTemplate = localStorage.getItem('selectedPortfolioTemplate');
+            if (savedTemplate) {
+                updateTemplatePreview(savedTemplate);
+            }
+        }
+    });
+    
+    // Helper function to add dynamic items
+    function addDynamicItem(containerId, type) {
+        const container = document.getElementById(containerId);
+        const template = container.querySelector('.list-item').cloneNode(true);
+        
+        // Clear values
+        template.querySelectorAll('input, textarea, select').forEach(el => {
+            if (el.tagName === 'SELECT') {
+                el.selectedIndex = 0;
+            } else {
+                el.value = '';
+            }
+        });
+        
+        // Clear image previews if they exist
+        const imagePreviewContainer = template.querySelector('.image-preview-container');
+        if (imagePreviewContainer) {
+            imagePreviewContainer.innerHTML = '';
+        }
+        
+        // Setup remove button
+        const removeBtn = template.querySelector('.remove-btn');
+        removeBtn.addEventListener('click', function() {
+            if (container.querySelectorAll('.list-item').length > 1) {
+                container.removeChild(template);
+            }
+        });
+        
+        container.appendChild(template);
+    }
+    
+    // Helper function to setup all remove buttons
+    function setupRemoveButtons() {
+        document.querySelectorAll('.dynamic-list .list-item .remove-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.closest('.list-item');
+                const parent = item.parentElement;
+                if (parent.querySelectorAll('.list-item').length > 1) {
+                    parent.removeChild(item);
+                }
+            });
+        });
+    }
+    
+    </script>
+    <script src="portfolioTemplate.js"></script>
+    <script>
+    // Final script to ensure template is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Final initialization for template preview');
+        
+        // Get template from URL if present
+        const urlParams = new URLSearchParams(window.location.search);
+        const templateFile = urlParams.get('template');
+        
+        // Get references to DOM elements
+        const templateNameElement = document.getElementById('selected-template-name');
+        const templateDescriptionElement = document.getElementById('template-description');
+        const templateInputElement = document.getElementById('selected-template');
+        const templateImageElement = document.getElementById('selected-template-img');
+        const templateSection = document.getElementById('template-section');
+        
+        if (!templateImageElement) {
+            console.error('Template image element not found!');
+            return;
+        }
+        
+        // Set a default image if none is set
+        if (!templateImageElement.src || templateImageElement.src === window.location.href) {
+            templateImageElement.src = 'https://via.placeholder.com/600x400?text=No+Template+Selected';
+        }
+        
+        // Add error handler for image loading
+        templateImageElement.onerror = function() {
+            console.error('Error loading template image, using fallback');
+            this.src = 'https://via.placeholder.com/600x400?text=Template+Preview';
+        };
+        
+        // Set the template image based on template selection
+        if (templateFile) {
+            // Set preview image based on template
+            if (templateFile.includes('ModernDesigner')) {
+                templateImageElement.src = "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+                console.log('Set ModernDesigner template image');
+            } else if (templateFile.includes('VisualShowcase')) {
+                templateImageElement.src = "https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+                console.log('Set VisualShowcase template image');
+            }
+            
+            // Format the template name for display
+            const templateName = templateFile.replace('.html', '').replace('_ptemp', '').replace(/([A-Z])/g, ' $1').trim();
+            
+            // Update the template name display
+            templateNameElement.textContent = templateName + ' Template';
+            
+            // Store the actual template filename in the hidden input
+            templateInputElement.value = templateFile;
+            
+            // Add template-selected class to highlight the selection
+            templateSection.classList.add('template-selected');
+            
+            console.log('Template selected and displayed:', templateFile);
+        } else {
+            // Check for template in localStorage
+            const savedTemplate = localStorage.getItem('selectedPortfolioTemplate');
+            if (savedTemplate) {
+                console.log('Found template in localStorage:', savedTemplate);
+                
+                // Set preview image based on template
+                if (savedTemplate.includes('ModernDesigner')) {
+                    templateImageElement.src = "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+                    console.log('Set ModernDesigner template image from localStorage');
+                } else if (savedTemplate.includes('VisualShowcase')) {
+                    templateImageElement.src = "https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+                    console.log('Set VisualShowcase template image from localStorage');
+                }
+                
+                // Format the template name for display
+                const templateName = savedTemplate.replace('.html', '').replace('_ptemp', '').replace(/([A-Z])/g, ' $1').trim();
+                
+                // Update the template name display
+                templateNameElement.textContent = templateName + ' Template';
+                
+                // Store the actual template filename in the hidden input
+                templateInputElement.value = savedTemplate;
+                
+                // Add template-selected class to highlight the selection
+                templateSection.classList.add('template-selected');
+                
+                console.log('Template loaded from localStorage and displayed:', savedTemplate);
+            }
+        }
+    });
+    
+    // Check if user is logged in
+    document.addEventListener('DOMContentLoaded', function() {
+        const userString = localStorage.getItem('user');
+        
+        if (userString) {
+            const user = JSON.parse(userString);
+            document.getElementById('login-btn').style.display = 'none';
+            document.getElementById('signup-btn').style.display = 'none';
+            document.getElementById('user-name').textContent = user.firstName || user.email;
+            document.getElementById('user-greeting').style.display = 'inline';
+            document.getElementById('logout-btn').style.display = 'inline';
+        }
+          // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            console.log('Logout button clicked');
+            
+            try {
+                console.log('Sending logout request to server...');
+                const response = await fetch('http://localhost:3000/logout', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                
+                console.log('Logout response:', response);
+                const data = await response.json();
+                console.log('Logout data:', data);
+                
+                // Clear user from localStorage
+                localStorage.removeItem('user');
+                console.log('User data removed from localStorage');
+                
+                // Refresh the page
+                window.location.reload();
+            } catch (err) {
+                console.error('Logout error:', err);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
